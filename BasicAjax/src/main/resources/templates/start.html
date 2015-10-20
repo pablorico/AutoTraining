@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
- 
-    <title>Basic Ajax AutotrainingSpring Framework Guru</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
- 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
- 
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
- 
-    <link href="../static/css/css.css"
-          th:href="@{css/css.css}" rel="stylesheet" media="screen"/>
+
+<title>Basic Ajax AutotrainingSpring Framework Guru</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+<link href="../static/css/css.css" th:href="@{css/css.css}"
+	rel="stylesheet" media="screen" />
+
 </head>
 <body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Hello</h1>
- 
-        <h2>Fellow Spring Framework Gurus!!!</h2>
-    </div>
-</div>
- 
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Hello</h1>
+
+			<h2>Fellow Spring Framework Gurus!!!</h2>
+			<div id="shotsBlock"></div>
+			<button id="shotsButton" name="shostsButton" onclick="retrieveShots()" type="button">Query Shots</button>
+		</div>
+	</div>
+
 </body>
+<script type="text/javascript">
+	function retrieveShots() {
+		var url = '/shots';
+
+		$("#shotsBlock").load(url);
+	}
+</script>
 </html>
