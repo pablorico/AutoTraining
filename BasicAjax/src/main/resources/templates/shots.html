@@ -4,11 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<div class="container">
-		<div class="jumbotron">
-			<h1>Hello, your shots:</h1>
-			<h2 th:text="${shots}">1000</h2>
-		</div>
+	<div th:fragment="shotsDiv">
+		<h2 id="shotsElement" th:text="${shots}">1000</h2>
 	</div>
+	<div th:fragment="shotsBy1000Div">
+		<h2 id="shotsElement" th:text="${shotsBy1000}">1000</h2>
+	</div>
+
 </body>
 </html>

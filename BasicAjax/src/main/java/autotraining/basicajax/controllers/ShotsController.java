@@ -22,6 +22,12 @@ public class ShotsController {
     @RequestMapping("/shots")
     String shots(Model m){
     	m.addAttribute("shots", shotService.shot());
-        return "shots";
+        return "shots :: shotsDiv";
+    }
+    
+    @RequestMapping("/shotsBy1000")
+    String shotsBy1000(Model m){
+    	m.addAttribute("shotsBy1000", shotService.shotBy1000());
+        return "shots :: shotsBy1000Div";
     }
 }

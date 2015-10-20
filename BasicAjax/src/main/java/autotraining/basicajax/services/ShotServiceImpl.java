@@ -15,5 +15,10 @@ public class ShotServiceImpl implements ShotService {
 	public int shot() {
 		return ++shot;
 	}
+	
+	@Override
+	public int shotBy1000() {
+		return shot*1000;
+	}
 
 }
