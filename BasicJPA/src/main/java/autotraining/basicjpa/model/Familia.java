@@ -36,5 +36,21 @@ public class Familia {
 	public Set<Individuo> getIndividuos() {
 		return individuos;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 	
 }
