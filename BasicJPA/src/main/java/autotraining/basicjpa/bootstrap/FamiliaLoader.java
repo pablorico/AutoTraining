@@ -26,35 +26,35 @@ public class FamiliaLoader implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
  
-    	Individuo individuo;
+    	Individuo individuo1, individuo2,individuo3, individuo4 ;
         Familia rico = new Familia();
         rico.setFamilia("Rico");
-        individuo = new Individuo();
-        individuo.setApellido("Rico");
-        individuo.setNombre("Pablo Eduardo");
-        individuo.setDocumento(21749446);
-        rico.getIndividuos().add(individuo);
-        individuo = new Individuo();
-        individuo.setApellido("Stronati");
-        individuo.setNombre("Mariela Andrea");
-        individuo.setDocumento(23471642);
-        rico.getIndividuos().add(individuo);
+        individuo1 = new Individuo();
+        individuo1.setApellido("Rico");
+        individuo1.setNombre("Pablo Eduardo");
+        individuo1.setDocumento(21749446);
+        rico.getIndividuos().add(individuo1);
+        individuo2 = new Individuo();
+        individuo2.setApellido("Stronati");
+        individuo2.setNombre("Mariela Andrea");
+        individuo2.setDocumento(23471642);
+        rico.getIndividuos().add(individuo2);
         familiaRepository.save(rico);
         
         log.info("Saved Familia - id: " + rico.getId());
  
         Familia carrasco = new Familia();
         carrasco.setFamilia("Carrasco");
-        individuo = new Individuo();
-        individuo.setApellido("Carrasco");
-        individuo.setNombre("Jorge");
-        individuo.setDocumento(20729226);
-        carrasco.getIndividuos().add(individuo);
-        individuo = new Individuo();
-        individuo.setApellido("Stronati");
-        individuo.setNombre("Alejandra Cynthia");
-        individuo.setDocumento(25332642);
-        carrasco.getIndividuos().add(individuo);
+        individuo3 = new Individuo();
+        individuo3.setApellido("Carrasco");
+        individuo3.setNombre("Jorge");
+        individuo3.setDocumento(20729226);
+        carrasco.getIndividuos().add(individuo3);
+        individuo4 = new Individuo();
+        individuo4.setApellido("Stronati");
+        individuo4.setNombre("Alejandra Cynthia");
+        individuo4.setDocumento(25332642);
+        carrasco.getIndividuos().add(individuo4);
         familiaRepository.save(carrasco);
         
         log.info("Saved Familia - id: " + carrasco.getId());

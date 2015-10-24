@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"autotraining.basicjpa.domain"})
+@EntityScan(basePackages = {"autotraining.basicjpa.model"})
 @EnableJpaRepositories(basePackages = {"autotraining.basicjpa.repositories"})
 @EnableTransactionManagement
 public class RepositoryConfiguration {
