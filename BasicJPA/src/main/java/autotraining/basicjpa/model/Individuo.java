@@ -1,5 +1,6 @@
 package autotraining.basicjpa.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +13,9 @@ import javax.persistence.Version;
 @Entity
 public class Individuo {
 	@Id
+	@Column(name="INDIVIDUO_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer individuoId;
 
 	@Version
 	private Integer version;
@@ -22,8 +24,8 @@ public class Individuo {
 	private String nombre;
 	private Integer documento;
 
-	@ManyToOne
-	@JoinColumn(name="id")
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FAMILIA_ID", nullable=false)
 	private Familia familia;
 	
 	public String getApellido() {
@@ -50,12 +52,12 @@ public class Individuo {
 		this.documento = documento;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIndividuoId() {
+		return individuoId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIndividuoId(Integer id) {
+		this.individuoId = id;
 	}
 
 	public Integer getVersion() {
@@ -72,7 +74,7 @@ public class Individuo {
 		int result = 1;
 		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
 		result = prime * result + ((documento == null) ? 0 : documento.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((individuoId == null) ? 0 : individuoId.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
@@ -97,10 +99,10 @@ public class Individuo {
 				return false;
 		} else if (!documento.equals(other.documento))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (individuoId == null) {
+			if (other.individuoId != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!individuoId.equals(other.individuoId))
 			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
