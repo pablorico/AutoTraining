@@ -1,15 +1,18 @@
 package autotraining.basicjpa.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.OneToMany;
 
@@ -17,19 +20,20 @@ import javax.persistence.OneToMany;
 @Entity
 public class Familia {
 	@Id
-	@Column(name="FAMILIA_ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer familiaId=null;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
 	@Version
 	private Integer version;
 	
 	private String familia;
 	
-	@OneToMany(mappedBy="familia", cascade=CascadeType.ALL)
-	private List<Individuo> individuos = new ArrayList<Individuo>();
+	@OneToMany(mappedBy="familia",cascade=CascadeType.ALL)
+	private Set<Individuo> individuos = new HashSet<Individuo>();
 	
 
+	public Familia() {}
+	
 	public void setFamilia(String familia) {
 		this.familia=familia;
 	}
@@ -39,16 +43,16 @@ public class Familia {
 	}
 	
 
-	public List<Individuo> getIndividuos() {
+	public Set<Individuo> getIndividuos() {
 		return individuos;
 	}
 
-	public Integer getFamiliaId() {
-		return familiaId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setFamiliaId(Integer id) {
-		this.familiaId = id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getVersion() {
@@ -59,7 +63,7 @@ public class Familia {
 		this.version = version;
 	}
 
-	public void setIndividuos(List<Individuo> individuos) {
+	public void setIndividuos(Set<Individuo> individuos) {
 		this.individuos = individuos;
 	}
 	@Override
@@ -67,7 +71,7 @@ public class Familia {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((familia == null) ? 0 : familia.hashCode());
-		result = prime * result + ((familiaId == null) ? 0 : familiaId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((individuos == null) ? 0 : individuos.hashCode());
 		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
@@ -87,10 +91,10 @@ public class Familia {
 				return false;
 		} else if (!familia.equals(other.familia))
 			return false;
-		if (familiaId == null) {
-			if (other.familiaId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!familiaId.equals(other.familiaId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (individuos == null) {
 			if (other.individuos != null)
