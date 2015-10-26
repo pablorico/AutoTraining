@@ -26,7 +26,7 @@ public class FamiliaLoader implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
  
-    	Individuo individuo;//,individuo2;
+    	Individuo individuo;
         
     	Familia rico = new Familia();
         rico.setFamilia("Rico");
