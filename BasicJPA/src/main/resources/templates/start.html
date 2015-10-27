@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
- 
-    <title>Basic JPA Autotraining</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
- 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
- 
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
- 
-    <link href="../static/css/guru.css"
-          th:href="@{css/guru.css}" rel="stylesheet" media="screen"/>
+
+<title>Basic JPA Autotraining</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+<link href="../static/css/guru.css" th:href="@{css/guru.css}"
+	rel="stylesheet" media="screen" />
+<!--/*/ <th:block th:include="headerFragment :: head"></th:block> /*/-->
 </head>
 <body>
-<div class="container">
-    <div class="jumbotron">
-        <img src="../static/images/197.JPG" width="600"
-             th:src="@{images/197.JPG}" />
-        <h1>Hello</h1>
- 
-        <h2>This is a basic JPA autotraining project</h2>
-    </div>
-</div>
- 
+	<div class="container">
+		<!--/*/ <th:block th:include="headerMenuFragment :: header"></th:block> /*/-->
+		<div class="jumbotron">
+			<img src="../static/images/197.JPG" width="600"
+				th:src="@{images/197.JPG}" />
+			<h1>Hello</h1>
+
+			<h2>This is a basic JPA autotraining project</h2>
+		</div>
+	</div>
+
 </body>
 </html>
