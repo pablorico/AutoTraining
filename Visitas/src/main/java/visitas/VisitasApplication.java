@@ -1,12 +1,12 @@
-package autotraining.basicjpa;
+package visitas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BasicJpaApplication {
+public class VisitasApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BasicJpaApplication.class, args);
+        SpringApplication.run(VisitasApplication.class, args);
     }
 }

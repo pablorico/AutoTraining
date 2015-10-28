@@ -1,10 +1,17 @@
-package autotraining.basicjpa.model;
+package visitas.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 @Entity
@@ -19,16 +26,16 @@ public class Individuo {
 	private String apellido;
 	private String nombre;
 	private Integer documento;
-	
 
-	
+	@OneToMany(mappedBy="individuo", cascade=CascadeType.ALL)
+	private Set<Siervo> siervos = new HashSet<Siervo>();
 
 	@ManyToOne
 	private Familia familia;
-	
-	
-	public Individuo() {}
-	
+
+	public Individuo() {
+	}
+
 	public String getApellido() {
 		return apellido;
 	}
@@ -118,7 +125,6 @@ public class Individuo {
 		return true;
 	}
 
-	
 	public Familia getFamilia() {
 		return familia;
 	}
@@ -126,13 +132,13 @@ public class Individuo {
 	public void setFamilia(Familia familia) {
 		this.familia = familia;
 	}
-/*
-	public Integer getFamiliaId() {
-		return familiaId;
+
+	public Set<Siervo> getSiervos() {
+		return siervos;
 	}
 
-	public void setFamiliaId(Integer familiaId) {
-		this.familiaId = familiaId;
+	public void setSiervos(Set<Siervo> siervos) {
+		this.siervos = siervos;
 	}
-	*/
+
 }

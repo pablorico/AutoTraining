@@ -1,4 +1,4 @@
-package autotraining.basicjpa.controllers;
+package visitas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import autotraining.basicjpa.model.Familia;
-import autotraining.basicjpa.services.FamiliaService;
+import visitas.model.Familia;
+import visitas.services.FamiliaService;
 
 @Controller
 public class FamiliaController {
@@ -49,7 +49,7 @@ public class FamiliaController {
 		return "familia";
 	}
 
-	@RequestMapping("product/delete/{id}")
+	@RequestMapping("familia/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		familiaService.deleteFamilia(id);
 		return "redirect:/familias";

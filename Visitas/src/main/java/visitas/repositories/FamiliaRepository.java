@@ -1,6 +1,7 @@
-package autotraining.basicjpa.repositories;
+package visitas.repositories;
 import org.springframework.data.repository.CrudRepository;
-import autotraining.basicjpa.model.Familia;
+
+import visitas.model.Familia;
 
 public interface FamiliaRepository extends CrudRepository<Familia, Integer>{
 }

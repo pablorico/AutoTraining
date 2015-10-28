@@ -1,10 +1,10 @@
-package autotraining.basicjpa.services;
+package visitas.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import autotraining.basicjpa.model.Familia;
-import autotraining.basicjpa.repositories.FamiliaRepository;
+import visitas.model.Familia;
+import visitas.repositories.FamiliaRepository;
 
 @Service
 public class FamiliaServiceImpl implements FamiliaService {

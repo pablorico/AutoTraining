@@ -1,21 +1,22 @@
-package autotraining.basicjpa.model;
+package visitas.model;
 
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
-import javax.persistence.OneToMany;
+
+import javax.persistence.OneToOne;
 
 
 @Entity
-public class Familia {
+public class Siervo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -23,25 +24,13 @@ public class Familia {
 	@Version
 	private Integer version;
 	
-	private String familia;
+	@ManyToOne
+	private Individuo individuo;
 	
-	@OneToMany(mappedBy="familia",cascade=CascadeType.ALL)
-	private Set<Individuo> individuos = new HashSet<Individuo>();
+	public Siervo() {}
 	
-
-	public Familia() {}
-	
-	public void setFamilia(String familia) {
-		this.familia=familia;
-	}
-	
-	public String getFamilia() {
-		return familia;
-	}
-	
-
-	public Set<Individuo> getIndividuos() {
-		return individuos;
+	public Individuo getIndividuo() {
+		return individuo;
 	}
 
 	public Integer getId() {
@@ -60,16 +49,16 @@ public class Familia {
 		this.version = version;
 	}
 
-	public void setIndividuos(Set<Individuo> individuos) {
-		this.individuos = individuos;
+	public void setIndividuo(Individuo individuo) {
+		this.individuo = individuo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((familia == null) ? 0 : familia.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((individuos == null) ? 0 : individuos.hashCode());
+		result = prime * result + ((individuo == null) ? 0 : individuo.hashCode());
 		result = prime * result + ((version == null) ? 0 : version.hashCode());
 		return result;
 	}
@@ -82,21 +71,16 @@ public class Familia {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Familia other = (Familia) obj;
-		if (familia == null) {
-			if (other.familia != null)
-				return false;
-		} else if (!familia.equals(other.familia))
-			return false;
+		Siervo other = (Siervo) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (individuos == null) {
-			if (other.individuos != null)
+		if (individuo == null) {
+			if (other.individuo != null)
 				return false;
-		} else if (!individuos.equals(other.individuos))
+		} else if (!individuo.equals(other.individuo))
 			return false;
 		if (version == null) {
 			if (other.version != null)
@@ -106,4 +90,5 @@ public class Familia {
 		return true;
 	}
 
+		
 }

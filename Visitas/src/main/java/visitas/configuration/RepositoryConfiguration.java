@@ -1,4 +1,4 @@
-package autotraining.basicjpa.configuration;
+package visitas.configuration;
  
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.orm.jpa.EntityScan;
@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"autotraining.basicjpa.model"})
-@EnableJpaRepositories(basePackages = {"autotraining.basicjpa.repositories"})
+@EntityScan(basePackages = {"visitas.model"})
+@EnableJpaRepositories(basePackages = {"visitas.repositories"})
 @EnableTransactionManagement
 public class RepositoryConfiguration {
 }

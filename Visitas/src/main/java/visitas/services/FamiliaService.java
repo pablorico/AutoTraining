@@ -1,6 +1,6 @@
-package autotraining.basicjpa.services;
+package visitas.services;
 
-import autotraining.basicjpa.model.Familia;
+import visitas.model.Familia;
 
 public interface FamiliaService {
 	Iterable <Familia> getAllFamilies();
