@@ -1,16 +1,11 @@
 package visitas.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
@@ -27,8 +22,8 @@ public class Individuo {
 	private String nombre;
 	private Integer documento;
 
-	@OneToMany(mappedBy="individuo", cascade=CascadeType.ALL)
-	private Set<Siervo> siervos = new HashSet<Siervo>();
+	@OneToOne(mappedBy="individuo", cascade=CascadeType.ALL)
+	private Siervo siervo;
 
 	@ManyToOne
 	private Familia familia;
@@ -133,12 +128,12 @@ public class Individuo {
 		this.familia = familia;
 	}
 
-	public Set<Siervo> getSiervos() {
-		return siervos;
+	public Siervo getSiervo() {
+		return siervo;
 	}
 
-	public void setSiervos(Set<Siervo> siervos) {
-		this.siervos = siervos;
+	public void setSiervo(Siervo siervo) {
+		this.siervo = siervo;
 	}
 
 }

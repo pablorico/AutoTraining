@@ -67,7 +67,7 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
         
         siervo = new Siervo();
         siervo.setIndividuo(individuo);
-        individuo.getSiervos().add(siervo);
+        individuo.setSiervo(siervo);
         
         individuo = new Individuo();
         individuo.setApellido("Stronati");
@@ -92,6 +92,10 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
         individuo.setDocumento(20729226);
         individuo.setFamilia(carrasco);
         carrasco.getIndividuos().add(individuo);
+        
+        siervo = new Siervo();
+        siervo.setIndividuo(individuo);
+        individuo.setSiervo(siervo);
         
         individuo = new Individuo();
         individuo.setApellido("Stronati");
