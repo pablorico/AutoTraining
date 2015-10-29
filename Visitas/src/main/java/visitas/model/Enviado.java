@@ -1,41 +1,35 @@
 package visitas.model;
 
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
-
-
+import javax.persistence.OneToOne;
 
 @Entity
-public class Siervo {
+public class Enviado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
 	@Version
 	private Integer version;
-	
+
+	@ManyToOne
+	private Visita visita;
+
 	@OneToOne
-	private Individuo individuo;
+	private Siervo siervo;
 
-	@ManyToOne
-	private Ministerio ministerio;
+	public Enviado() {
+	}
 
-	@ManyToOne
-	private Iglesia iglesia;
-	
-	public Siervo() {}
-	
-	public Individuo getIndividuo() {
-		return individuo;
+	public Siervo getSiervo() {
+		return siervo;
 	}
 
 	public Integer getId() {
@@ -54,23 +48,17 @@ public class Siervo {
 		this.version = version;
 	}
 
-	public void setIndividuo(Individuo individuo) {
-		this.individuo = individuo;
-	}
-	public Ministerio getMinisterio() {
-		return ministerio;
+	public void setSiervo(Siervo siervo) {
+		this.siervo = siervo;
 	}
 
-	public void setMinisterio(Ministerio ministerio) {
-		this.ministerio = ministerio;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((individuo == null) ? 0 : individuo.hashCode());
-		result = prime * result + ((version == null) ? 0 : version.hashCode());
+		result = prime * result + ((siervo == null) ? 0 : siervo.hashCode());
+		result = prime * result + ((visita == null) ? 0 : visita.hashCode());
 		return result;
 	}
 
@@ -82,34 +70,24 @@ public class Siervo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Siervo other = (Siervo) obj;
+		Enviado other = (Enviado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (individuo == null) {
-			if (other.individuo != null)
+		if (siervo == null) {
+			if (other.siervo != null)
 				return false;
-		} else if (!individuo.equals(other.individuo))
+		} else if (!siervo.equals(other.siervo))
 			return false;
-		if (version == null) {
-			if (other.version != null)
+		if (visita == null) {
+			if (other.visita != null)
 				return false;
-		} else if (!version.equals(other.version))
+		} else if (!visita.equals(other.visita))
 			return false;
 		return true;
 	}
 
-	public Iglesia getIglesia() {
-		return iglesia;
-	}
 
-	public void setIglesia(Iglesia iglesia) {
-		this.iglesia = iglesia;
-	}
-
-
-
-		
 }

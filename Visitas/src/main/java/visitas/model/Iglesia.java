@@ -28,6 +28,9 @@ public class Iglesia {
 	@OneToMany(mappedBy="iglesia",cascade=CascadeType.ALL)
 	private Set<Familia> familias = new HashSet<Familia>();
 	
+	@OneToMany(mappedBy="iglesia",cascade=CascadeType.ALL)
+	private Set<Siervo> siervos = new HashSet<Siervo>();
+	
 	public Iglesia() {}
 	
 	public void setIglesia(String iglesia) {
@@ -98,6 +101,14 @@ public class Iglesia {
 		} else if (!version.equals(other.version))
 			return false;
 		return true;
+	}
+
+	public Set<Siervo> getSiervos() {
+		return siervos;
+	}
+
+	public void setSiervos(Set<Siervo> siervos) {
+		this.siervos = siervos;
 	}
 	
 	

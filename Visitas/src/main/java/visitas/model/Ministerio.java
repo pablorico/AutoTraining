@@ -1,21 +1,19 @@
 package visitas.model;
 
 
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-
-
-
 @Entity
-public class Siervo {
+public class Ministerio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -23,20 +21,21 @@ public class Siervo {
 	@Version
 	private Integer version;
 	
-	@OneToOne
-	private Individuo individuo;
-
-	@ManyToOne
-	private Ministerio ministerio;
-
-	@ManyToOne
-	private Iglesia iglesia;
+	private String ministerio;
 	
-	public Siervo() {}
+	@OneToMany(mappedBy="ministerio",cascade=CascadeType.ALL)
+	private Set<Siervo> siervos=new HashSet<Siervo>();
 	
-	public Individuo getIndividuo() {
-		return individuo;
+	public Ministerio() {}
+	
+	public void setMinisterio(String ministerio) {
+		this.ministerio=ministerio;
 	}
+	
+	public String getMinisterio() {
+		return ministerio;
+	}
+	
 
 	public Integer getId() {
 		return id;
@@ -54,23 +53,20 @@ public class Siervo {
 		this.version = version;
 	}
 
-	public void setIndividuo(Individuo individuo) {
-		this.individuo = individuo;
-	}
-	public Ministerio getMinisterio() {
-		return ministerio;
+	public Set<Siervo> getSiervos() {
+		return siervos;
 	}
 
-	public void setMinisterio(Ministerio ministerio) {
-		this.ministerio = ministerio;
+	public void setSiervos(Set<Siervo> siervos) {
+		this.siervos = siervos;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((individuo == null) ? 0 : individuo.hashCode());
-		result = prime * result + ((version == null) ? 0 : version.hashCode());
+		result = prime * result + ((ministerio == null) ? 0 : ministerio.hashCode());
 		return result;
 	}
 
@@ -82,34 +78,19 @@ public class Siervo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Siervo other = (Siervo) obj;
+		Ministerio other = (Ministerio) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (individuo == null) {
-			if (other.individuo != null)
+		if (ministerio == null) {
+			if (other.ministerio != null)
 				return false;
-		} else if (!individuo.equals(other.individuo))
-			return false;
-		if (version == null) {
-			if (other.version != null)
-				return false;
-		} else if (!version.equals(other.version))
+		} else if (!ministerio.equals(other.ministerio))
 			return false;
 		return true;
 	}
-
-	public Iglesia getIglesia() {
-		return iglesia;
-	}
-
-	public void setIglesia(Iglesia iglesia) {
-		this.iglesia = iglesia;
-	}
-
-
 
 		
 }
