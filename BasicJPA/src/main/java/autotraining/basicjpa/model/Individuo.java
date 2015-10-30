@@ -11,6 +11,7 @@ import javax.persistence.Version;
 
 @Entity
 @Table(indexes={@Index(name="myIDX",unique=true,columnList="APELLIDO,NOMBRE")})
+
 public class Individuo {
 	
 	@Id
