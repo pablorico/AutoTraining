@@ -3,7 +3,6 @@ package visitas.test;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Iterator;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
