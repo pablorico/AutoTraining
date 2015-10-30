@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class Enviado {
@@ -22,7 +22,7 @@ public class Enviado {
 	@ManyToOne
 	private Visita visita;
 
-	@OneToOne
+	@ManyToOne
 	private Siervo siervo;
 
 	public Enviado() {

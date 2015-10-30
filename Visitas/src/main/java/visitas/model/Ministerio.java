@@ -23,10 +23,10 @@ public class Ministerio {
 	
 	private String ministerio;
 	
-	@OneToMany(mappedBy="ministerio",cascade=CascadeType.ALL)
-	private Set<Siervo> siervos=new HashSet<Siervo>();
-	
 	public Ministerio() {}
+	
+	@OneToMany(mappedBy="ministerio",cascade=CascadeType.ALL)
+	private Set<Siervo> siervos = new HashSet<Siervo>();
 	
 	public void setMinisterio(String ministerio) {
 		this.ministerio=ministerio;
@@ -53,13 +53,7 @@ public class Ministerio {
 		this.version = version;
 	}
 
-	public Set<Siervo> getSiervos() {
-		return siervos;
-	}
-
-	public void setSiervos(Set<Siervo> siervos) {
-		this.siervos = siervos;
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -90,6 +84,14 @@ public class Ministerio {
 		} else if (!ministerio.equals(other.ministerio))
 			return false;
 		return true;
+	}
+
+	public Set<Siervo> getSiervos() {
+		return siervos;
+	}
+
+	public void setSiervos(Set<Siervo> siervos) {
+		this.siervos = siervos;
 	}
 
 		

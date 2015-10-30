@@ -1,16 +1,18 @@
 package visitas.model;
 
-
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
-
 
 
 
@@ -22,8 +24,9 @@ public class Siervo {
 
 	@Version
 	private Integer version;
-	
-	@OneToOne
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "INDIVIDUO_ID")
 	private Individuo individuo;
 
 	@ManyToOne
@@ -31,9 +34,13 @@ public class Siervo {
 
 	@ManyToOne
 	private Iglesia iglesia;
-	
-	public Siervo() {}
-	
+
+	@OneToMany(mappedBy = "siervo", cascade = CascadeType.ALL)
+	private Set<Enviado> envios = new HashSet<Enviado>();
+
+	public Siervo() {
+	}
+
 	public Individuo getIndividuo() {
 		return individuo;
 	}
@@ -57,6 +64,7 @@ public class Siervo {
 	public void setIndividuo(Individuo individuo) {
 		this.individuo = individuo;
 	}
+
 	public Ministerio getMinisterio() {
 		return ministerio;
 	}
@@ -64,6 +72,7 @@ public class Siervo {
 	public void setMinisterio(Ministerio ministerio) {
 		this.ministerio = ministerio;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -109,7 +118,12 @@ public class Siervo {
 		this.iglesia = iglesia;
 	}
 
+	public Set<Enviado> getEnvios() {
+		return envios;
+	}
 
+	public void setEnvios(Set<Enviado> envios) {
+		this.envios = envios;
+	}
 
-		
 }

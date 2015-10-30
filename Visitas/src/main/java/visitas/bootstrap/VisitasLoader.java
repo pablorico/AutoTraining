@@ -2,6 +2,8 @@ package visitas.bootstrap;
 
 import java.sql.Date;
 
+import javax.transaction.Transactional;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -15,15 +17,14 @@ import visitas.model.Individuo;
 import visitas.model.Ministerio;
 import visitas.model.Siervo;
 import visitas.model.Visita;
-import visitas.repositories.FamiliaRepository;
+//import visitas.repositories.FamiliaRepository;
 import visitas.repositories.IglesiaRepository;
 import visitas.repositories.MinisterioRepository;
+import visitas.repositories.SiervoRepository;
+//import visitas.repositories.VisitaRepository;
 
 @Component
 public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent> {
-
-	@Autowired
-	private FamiliaRepository familiaRepository;
 
 	@Autowired
 	private IglesiaRepository iglesiaRepository;
@@ -31,17 +32,23 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 	@Autowired
 	private MinisterioRepository ministerioRepository;
 
+//	@Autowired
+//	private VisitaRepository visitaRepository;
+	
+	@Autowired
+	private SiervoRepository siervoRepository;
+	
+//	@Autowired
+//	private FamiliaRepository familiaRepository;
+	
 	private Logger log = Logger.getLogger(VisitasLoader.class);
-
-	public void setFamiliaRepository(FamiliaRepository familiaRepository) {
-		this.familiaRepository = familiaRepository;
-	}
 
 	public void setIglesiaRepository(IglesiaRepository iglesiaRepository) {
 		this.iglesiaRepository = iglesiaRepository;
 	}
 
 	@Override
+	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
 		Iglesia saavedra;
@@ -69,11 +76,21 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 		ePastor=new Enviado();
 		eDiacono=new Enviado();
 		
+	
+		
+		pastor.setMinisterio("Pastor");
+		diacono.setMinisterio("Diacono");
+		ministerioRepository.save(pastor);
+		ministerioRepository.save(diacono);
 		
 		saavedra.setIglesia("Saavedra");
+	//	saavedra=iglesiaRepository.save(saavedra);
 		
 		rico.setFamilia("Rico");
 		gregorio.setFamilia("Gregorio");
+		
+	//	rico=familiaRepository.save(rico);
+	//	gregorio=familiaRepository.save(gregorio);
 		
 		saavedra.getFamilias().add(rico);
 		saavedra.getFamilias().add(gregorio);
@@ -81,19 +98,20 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 		saavedra.getSiervos().add(diaconoGregorio);
 		rico.setIglesia(saavedra);
 		gregorio.setIglesia(saavedra);
-		pastor.setMinisterio("Pastor");
-		diacono.setMinisterio("Diacono");
+		
+		
 		pastorPablo.setIglesia(saavedra);
 		pastorPablo.setMinisterio(pastor);
 		diaconoGregorio.setMinisterio(diacono);
 		diaconoGregorio.setIglesia(saavedra);
-		/*
-		
-		
-		ministerioRepository.save(pastor);
-		pastor.getSiervos().add(pastorPablo);
-		ministerioRepository.save(d);
-		diacono.getSiervos().add(diaconoGregorio);
+
+	//	pastorPablo=siervoRepository.save(pastorPablo);
+	//	diaconoGregorio=siervoRepository.save(diaconoGregorio);
+
+		//pastor.getSiervos().add(pastorPablo);
+
+		//diacono.getSiervos().add(diaconoGregorio);
+//		saavedra = iglesiaRepository.save(saavedra);
 		
 		
 		pablo.setFamilia(rico);
@@ -133,9 +151,16 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 		pastorPablo.setMinisterio(pastor);
 		diaconoGregorio.setIndividuo(gaston);
 		diaconoGregorio.setMinisterio(diacono);
+		pastorPablo=siervoRepository.save(pastorPablo);
+		diaconoGregorio=siervoRepository.save(diaconoGregorio);
+		
+//		saavedra=iglesiaRepository.save(saavedra);
 		
 		ePastor.setSiervo(pastorPablo);
 		eDiacono.setSiervo(diaconoGregorio);
+		
+		pastorPablo.getEnvios().add(ePastor);
+		diaconoGregorio.getEnvios().add(eDiacono);
 		
 		visita.setaCargo(ePastor);
 		visita.getColaboradores().add(ePastor);
@@ -144,19 +169,22 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 		visita.setFecha(new Date(System.currentTimeMillis()));
 		visita.setIglesia(saavedra);
 		
+		//rico.getVisitas().add(visita);
+		
+	//	visita=visitaRepository.save(visita);
+		saavedra=iglesiaRepository.save(saavedra);
 		
 		
 		
 		
-		
-		
-		*/
+
 		// familiaRepository.save(rico);
-		iglesiaRepository.save(saavedra);
 		
+		log.info("Saved Familia - id: " + rico.getId());
+			
 		/*
 		 * 
-		 * log.info("Saved Familia - id: " + rico.getId()); Iglesia bosch = new
+		 *  Iglesia bosch = new
 		 * Iglesia(); bosch.setIglesia("Villa Bosch");
 		 * //iglesiaRepository.save(bosch);
 		 * 
@@ -188,4 +216,16 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 	public void setMinisterioRepository(MinisterioRepository ministerioRepository) {
 		this.ministerioRepository = ministerioRepository;
 	}
+
+	//public void setVisitaRepository(VisitaRepository visitaRepository) {
+	//	this.visitaRepository = visitaRepository;
+	//}
+
+	public void setSiervoRepository(SiervoRepository siervoRepository) {
+		this.siervoRepository = siervoRepository;
+	}
+
+	//public void setFamiliaRepository(FamiliaRepository familiaRepository) {
+	//	this.familiaRepository = familiaRepository;
+	//}
 }
