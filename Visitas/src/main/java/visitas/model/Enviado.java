@@ -89,5 +89,13 @@ public class Enviado {
 		return true;
 	}
 
+	public Visita getVisita() {
+		return visita;
+	}
+
+	public void setVisita(Visita visita) {
+		this.visita = visita;
+	}
+
 
 }

@@ -2,6 +2,7 @@ package visitas.bootstrap;
 
 import java.sql.Date;
 
+
 import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
@@ -17,11 +18,11 @@ import visitas.model.Individuo;
 import visitas.model.Ministerio;
 import visitas.model.Siervo;
 import visitas.model.Visita;
-//import visitas.repositories.FamiliaRepository;
+import visitas.repositories.FamiliaRepository;
 import visitas.repositories.IglesiaRepository;
 import visitas.repositories.MinisterioRepository;
 import visitas.repositories.SiervoRepository;
-//import visitas.repositories.VisitaRepository;
+import visitas.repositories.VisitaRepository;
 
 @Component
 public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -32,14 +33,14 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 	@Autowired
 	private MinisterioRepository ministerioRepository;
 
-//	@Autowired
-//	private VisitaRepository visitaRepository;
+	@Autowired
+	private VisitaRepository visitaRepository;
 	
 	@Autowired
 	private SiervoRepository siervoRepository;
 	
-//	@Autowired
-//	private FamiliaRepository familiaRepository;
+	@Autowired
+	private FamiliaRepository familiaRepository;
 	
 	private Logger log = Logger.getLogger(VisitasLoader.class);
 
@@ -50,182 +51,170 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 	@Override
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		
-		Iglesia saavedra;
-		Ministerio pastor, diacono;
-		Individuo pablo, mariela, lucila, giuliana, fiorella, gaston;
-		Familia rico, gregorio;
-		Siervo pastorPablo,diaconoGregorio;
-		Visita visita;
-		Enviado ePastor, eDiacono;
-		
-		saavedra=new Iglesia();
-		pastor=new Ministerio();
-		diacono=new Ministerio();
-		pablo=new Individuo();
-		mariela=new Individuo();
-		lucila=new Individuo();
-		giuliana=new Individuo();
-		fiorella=new Individuo();
-		gaston=new Individuo();
-		rico=new Familia();
-		gregorio=new Familia();
-		pastorPablo=new Siervo();
-		diaconoGregorio=new Siervo();
-		visita= new Visita();
-		ePastor=new Enviado();
-		eDiacono=new Enviado();
-		
-	
-		
-		pastor.setMinisterio("Pastor");
-		diacono.setMinisterio("Diacono");
-		ministerioRepository.save(pastor);
-		ministerioRepository.save(diacono);
-		
-		saavedra.setIglesia("Saavedra");
-	//	saavedra=iglesiaRepository.save(saavedra);
-		
-		rico.setFamilia("Rico");
-		gregorio.setFamilia("Gregorio");
-		
-	//	rico=familiaRepository.save(rico);
-	//	gregorio=familiaRepository.save(gregorio);
-		
-		saavedra.getFamilias().add(rico);
-		saavedra.getFamilias().add(gregorio);
-		saavedra.getSiervos().add(pastorPablo);
-		saavedra.getSiervos().add(diaconoGregorio);
-		rico.setIglesia(saavedra);
-		gregorio.setIglesia(saavedra);
-		
-		
-		pastorPablo.setIglesia(saavedra);
-		pastorPablo.setMinisterio(pastor);
-		diaconoGregorio.setMinisterio(diacono);
-		diaconoGregorio.setIglesia(saavedra);
 
-	//	pastorPablo=siervoRepository.save(pastorPablo);
-	//	diaconoGregorio=siervoRepository.save(diaconoGregorio);
-
-		//pastor.getSiervos().add(pastorPablo);
-
-		//diacono.getSiervos().add(diaconoGregorio);
-//		saavedra = iglesiaRepository.save(saavedra);
-		
-		
-		pablo.setFamilia(rico);
-		pablo.setSiervo(pastorPablo);
-		pablo.setApellido("Rico");
-		pablo.setNombre("Pablo Eduardo");
-		pablo.setDocumento(21749446);
-		
-		mariela.setFamilia(rico);
-		mariela.setApellido("Stronati");
-		mariela.setNombre("Mariela Andrea");
-		mariela.setDocumento(23471642);
-		
-		lucila.setFamilia(rico);
-		lucila.setApellido("Rico");
-		lucila.setNombre("Lucila");
-		lucila.setDocumento(43471642);
-		
-		giuliana.setFamilia(rico);
-		giuliana.setApellido("Rico");
-		giuliana.setNombre("Giuli");
-		giuliana.setDocumento(53471642);
-		
-		fiorella.setFamilia(rico);
-		fiorella.setApellido("Rico");
-		fiorella.setNombre("Fiore");
-		fiorella.setDocumento(63471642);
-				
-		gaston.setFamilia(gregorio);
-		gaston.setSiervo(diaconoGregorio);
-		gaston.setApellido("Gregorio");
-		gaston.setNombre("Gaston");
-		gaston.setDocumento(33471642);
-		
-				
-		pastorPablo.setIndividuo(pablo);
-		pastorPablo.setMinisterio(pastor);
-		diaconoGregorio.setIndividuo(gaston);
-		diaconoGregorio.setMinisterio(diacono);
-		pastorPablo=siervoRepository.save(pastorPablo);
-		diaconoGregorio=siervoRepository.save(diaconoGregorio);
-		
-//		saavedra=iglesiaRepository.save(saavedra);
-		
-		ePastor.setSiervo(pastorPablo);
-		eDiacono.setSiervo(diaconoGregorio);
-		
-		pastorPablo.getEnvios().add(ePastor);
-		diaconoGregorio.getEnvios().add(eDiacono);
-		
-		visita.setaCargo(ePastor);
-		visita.getColaboradores().add(ePastor);
-		visita.getColaboradores().add(eDiacono);
-		visita.setFamilia(rico);
-		visita.setFecha(new Date(System.currentTimeMillis()));
-		visita.setIglesia(saavedra);
-		
-		//rico.getVisitas().add(visita);
-		
-	//	visita=visitaRepository.save(visita);
-		saavedra=iglesiaRepository.save(saavedra);
-		
-		
-		
-		
-
-		// familiaRepository.save(rico);
-		
-		log.info("Saved Familia - id: " + rico.getId());
-			
-		/*
-		 * 
-		 *  Iglesia bosch = new
-		 * Iglesia(); bosch.setIglesia("Villa Bosch");
-		 * //iglesiaRepository.save(bosch);
-		 * 
-		 * Familia carrasco = new Familia(); carrasco.setFamilia("Carrasco");
-		 * carrasco.setIglesia(bosch);
-		 * 
-		 * individuo = new Individuo(); individuo.setApellido("Carrasco");
-		 * individuo.setNombre("Jorge"); individuo.setDocumento(20729226);
-		 * individuo.setFamilia(carrasco);
-		 * carrasco.getIndividuos().add(individuo);
-		 * 
-		 * siervo = new Siervo(); siervo.setIndividuo(individuo);
-		 * individuo.setSiervo(siervo);
-		 * 
-		 * individuo = new Individuo(); individuo.setApellido("Stronati");
-		 * individuo.setNombre("Alejandra Cynthia");
-		 * individuo.setDocumento(25332642); individuo.setFamilia(carrasco);
-		 * carrasco.getIndividuos().add(individuo); individuo = new Individuo();
-		 * individuo.setApellido("Carrasco"); individuo.setNombre("Valentina");
-		 * individuo.setDocumento(45332642); individuo.setFamilia(carrasco);
-		 * carrasco.getIndividuos().add(individuo);
-		 * 
-		 * familiaRepository.save(carrasco);
-		 * 
-		 * log.info("Saved Familia - id: " + carrasco.getId());
-		 */
+		log.info("Creando Ministerios ...");
+		_createMinisterios();
+		log.info("Creando Iglesias ...");
+		Iglesia saavedra = _createIglesia();
+		log.info("Creando Familias ...");
+		_createFamilias(saavedra);
+		log.info("Creando Siervos ...");
+		_createSiervos(saavedra);
+		log.info("Creando Visitas ...");
+		_createVisita(saavedra);
+		log.info("Todo Creado!");
 	}
+	
+	private void _createMinisterios() {
+		Ministerio m = new Ministerio();
+		m.setMinisterio("Pastor");
+		ministerioRepository.save(m);
+		m = new Ministerio();
+		m.setMinisterio("Diacono");
+		ministerioRepository.save(m);
+	}
+	
+	private Iglesia _createIglesia() {
+		Iglesia i = new Iglesia();
+		i.setIglesia("Saavedra");
+		iglesiaRepository.save(i);
+		return i;
+	}
+	
+	private void _createFamilias(Iglesia iglesia) {
+
+		Familia f;
+		Individuo i;
+		f = new Familia();
+		f.setIglesia(iglesia);
+		f.setFamilia("Rico");
+		
+		i = new Individuo();
+		i.setApellido("Rico");
+		i.setNombre("Pablo");
+		i.setDocumento(10);
+		i.setFamilia(f);
+
+		f.getIndividuos().add(i);
+		
+		i = new Individuo();
+		i.setApellido("Stronati");
+		i.setNombre("Mariela");
+		i.setDocumento(20);
+		i.setFamilia(f);
+		
+		f.getIndividuos().add(i);
+		
+		i = new Individuo();
+		i.setApellido("Rico");
+		i.setNombre("Fiore");
+		i.setDocumento(220);
+		i.setFamilia(f);
+		
+		f.getIndividuos().add(i);
+		
+		iglesia.getFamilias().add(f);
+		
+		
+		familiaRepository.save(f);
+
+		f = new Familia();
+		f.setIglesia(iglesia);
+		f.setFamilia("Gregorio");
+		
+		i = new Individuo();
+		i.setApellido("Gregorio");
+		i.setNombre("Gaston");
+		i.setDocumento(20);
+		i.setFamilia(f);
+
+		f.getIndividuos().add(i);
+		
+		i = new Individuo();
+		i.setApellido("Gregorio");
+		i.setNombre("Marta");
+		i.setDocumento(340);
+		i.setFamilia(f);
+
+		f.getIndividuos().add(i);
+		
+		iglesia.getFamilias().add(f);
+		
+		
+		familiaRepository.save(f);
+
+		//iglesiaRepository.save(iglesia);
+		
+		
+	}
+	
+	private void _createSiervos(Iglesia iglesia) {
+		Siervo s = new Siervo();
+		s.setIglesia(iglesia);
+		iglesia.getSiervos().add(s);
+		s.setMinisterio(ministerioRepository.findOne(1));
+		s.setIndividuo(_getIndividuo(iglesia,"Rico","Pablo"));
+		s.getIndividuo().setSiervo(s);
+		siervoRepository.save(s);
+		s = new Siervo();
+		s.setIglesia(iglesia);
+		iglesia.getSiervos().add(s);
+		s.setMinisterio(ministerioRepository.findOne(2));
+		s.setIndividuo(_getIndividuo(iglesia,"Gregorio","Gaston"));
+		s.getIndividuo().setSiervo(s);
+		siervoRepository.save(s);
+		
+		
+		
+		
+	}
+	
+	private Individuo _getIndividuo (Iglesia iglesia, String apellido, String nombre) {
+		Individuo r=null;
+		for(Familia f:iglesia.getFamilias()) {
+			if(f.getFamilia().equals(apellido)) {
+				for (Individuo i: f.getIndividuos()) {
+					if(i.getNombre().equals(nombre)) {
+						return (i);
+					}
+				}
+			}
+		}
+		return r;
+	}
+	
+	private void _createVisita(Iglesia iglesia) {
+		Visita v=new Visita();
+		v.setIglesia(iglesia);
+		v.setFamilia(familiaRepository.findOne(1));
+		Enviado e;
+		e = new Enviado();
+		e.setVisita(v);
+		e.setSiervo(siervoRepository.findOne(1));
+		v.setaCargo(e);
+		v.getColaboradores().add(e);
+		e = new Enviado();
+		e.setVisita(v);
+		e.setSiervo(siervoRepository.findOne(2));
+		v.getColaboradores().add(e);
+		v.setFecha(new Date(System.currentTimeMillis()));
+		visitaRepository.save(v);
+	}
+	
 
 	public void setMinisterioRepository(MinisterioRepository ministerioRepository) {
 		this.ministerioRepository = ministerioRepository;
 	}
 
-	//public void setVisitaRepository(VisitaRepository visitaRepository) {
-	//	this.visitaRepository = visitaRepository;
-	//}
+	public void setVisitaRepository(VisitaRepository visitaRepository) {
+		this.visitaRepository = visitaRepository;
+	}
 
 	public void setSiervoRepository(SiervoRepository siervoRepository) {
 		this.siervoRepository = siervoRepository;
 	}
 
-	//public void setFamiliaRepository(FamiliaRepository familiaRepository) {
-	//	this.familiaRepository = familiaRepository;
-	//}
+	public void setFamiliaRepository(FamiliaRepository familiaRepository) {
+		this.familiaRepository = familiaRepository;
+	}
 }

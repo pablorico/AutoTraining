@@ -7,10 +7,10 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:visitas.BasicJpaApplication</config>
-		<config>java:visitas.configuration.RepositoryConfiguration</config>
+		<config>java:visitas.test.BasicJpaApplication</config>
 	</configs>
 	<autoconfigs>
+		<config>java:autotraining.basicjpa.configuration.RepositoryConfiguration</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
