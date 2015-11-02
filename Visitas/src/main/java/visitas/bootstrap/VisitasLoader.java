@@ -100,7 +100,7 @@ public class VisitasLoader implements ApplicationListener<ContextRefreshedEvent>
 		i = new Individuo();
 		i.setApellido("Stronati");
 		i.setNombre("Mariela");
-		i.setDocumento(20);
+		i.setDocumento(250);
 		i.setFamilia(f);
 		
 		f.getIndividuos().add(i);
