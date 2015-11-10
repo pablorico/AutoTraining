@@ -26,10 +26,12 @@ public class FamiliaController {
 		return "familia";
 	}
 
+	/*
 	@RequestMapping(value = "/familias", method = RequestMethod.GET)
 	String showAll(Model model) {
 		return "familias";
 	}
+	*/
 
 	@RequestMapping(value = "/familia/new")
 	String newFamilia(Model model) {

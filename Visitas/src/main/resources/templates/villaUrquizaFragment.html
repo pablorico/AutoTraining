@@ -5,12 +5,12 @@
 <body>
 	<div th:fragment="iglesias">
 		<ul class="nav navbar-nav">
-		<li><a href="#" onclick="retrieveIglesias('saavedra')">Saavedra</a></li>
-			<li class="active"><a href="#" onclick="retrieveIglesias('villaUrquiza')">Villa Urquiza<span
+		<li><a href="#" onclick="ajaxLoadHTML('#iglesias','/saavedra')">Saavedra</a></li>
+			<li class="active"><a href="#" onclick="ajaxLoadHTML('#iglesias','/villaUrquiza')">Villa Urquiza<span
 								class="sr-only"></span></a></li>
-			<li><a href="#" onclick="retrieveIglesias('villaPueyrredon')">Villa Pueyrredon</a></li>
-			<li><a href="#" onclick="retrieveIglesias('villaMartelli')">Villa Martelli</a></li>
-			<li><a href="#" onclick="retrieveIglesias('belgrano')">Belgrano</a></li>
+			<li><a href="#" onclick="ajaxLoadHTML('#iglesias','/villaPueyrredon')">Villa Pueyrredon</a></li>
+			<li><a href="#" onclick="ajaxLoadHTML('#iglesias','/villaMartelli')">Villa Martelli</a></li>
+			<li><a href="#" onclick="ajaxLoadHTML('#iglesias','/belgrano')">Belgrano</a></li>
 		</ul>
 	</div>
 </body>

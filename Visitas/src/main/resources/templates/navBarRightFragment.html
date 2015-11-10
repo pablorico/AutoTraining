@@ -3,19 +3,23 @@
 <head lang="en">
 </head>
 <body>
-	<div th:fragment="navBar">
+	<nav th:fragment="navBar">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">Siervos</a></li>
-			<li><a href="#">Familias</a></li>
+			<li><div id="objetos">
+					<th:block th:include="objetosFragment :: objetos"></th:block>
+				</div></li>
 			<li>
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search"></input>
-					</div>
-					<button type="submit" class="btn btn-default">Buscar</button>
-				</form>
+				<nav class="navbar-nav" th:id="search">
+					<form class="navbar-form" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control"
+								placeholder="Texto a buscar"></input>
+						</div>
+						<button type="submit" class="btn btn-default">Buscar</button>
+					</form>
+				</nav>
 			</li>
 		</ul>
-	</div>
+	</nav>
 </body>
 </html>

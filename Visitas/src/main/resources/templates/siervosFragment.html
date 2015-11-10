@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+</head>
+<body>
+	<nav class="nav navbar-nav" th:fragment="objetos">
+		<ul class="nav navbar-nav">
+			<li><a href="#" onclick="ajaxLoadHTML('#objetos','/familias')">Familias</a></li>
+			<li class="active"><a href="#"
+				onclick="ajaxLoadHTML('#objetos','/siervos')">Siervos<span
+					class="sr-only"></span></a></li>
+		</ul>
+	</nav>
+</body>
+</html>
+

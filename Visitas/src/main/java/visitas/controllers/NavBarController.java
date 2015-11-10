@@ -37,4 +37,15 @@ public class NavBarController {
 	public String showVillaUrquiza() {
 		return "villaUrquizaFragment :: iglesias";
 	}
+	
+	@RequestMapping(value = "/siervos", method = RequestMethod.GET)
+	public String showSiervos() {
+		return "siervosFragment :: objetos";
+	}
+	
+	@RequestMapping(value = "/familias", method = RequestMethod.GET)
+	public String showFamilias() {
+		return "familiasFragment :: objetos";
+	}
+	
 }

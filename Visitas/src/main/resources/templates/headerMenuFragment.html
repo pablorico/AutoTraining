@@ -15,14 +15,13 @@
 						<th:block th:id="iglesias"
 							th:include="iglesiasFragment :: iglesias"></th:block>
 					</div>
-					<div id="navBarRight">
-						<th:block id="navBarRight" th:id="navBarRight"
-							th:include="navBarRightFragment :: navBar"></th:block>
+					<div id="navBar">
+						<th:block th:include="navBarRightFragment :: navBar"></th:block>
 					</div>
 				</div>
 			</div>
 		</nav>
-		<script th:src="@{js/navBarAjax.js}"></script>
+		<script th:src="@{js/basicAjax.js}"></script>
 	</div>
 </body>
 
