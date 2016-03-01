@@ -24,7 +24,7 @@ public class CalificacionServiceImpl implements CalificacionService {
 
 	@Override
 	public Iterable<Calificacion> listCalificacionesByRango(Date desde, Date hasta) {
-		return calificacionRepository.findAll();
+		return calificacionRepository.findByFechaBetween(desde, hasta);
 	}
 	
 	@Override

@@ -1,4 +1,6 @@
 package net.redirectme.per.calificador.controllers;
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +24,7 @@ public class CalificacionController {
 
     @RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
     public String calificaciones(Model model){
-        model.addAttribute("calificaciones", calificacionService.listAllCalificaciones());
+    	model.addAttribute("calificaciones", calificacionService.listCalificacionesByRango(Date.valueOf("2016-02-29"), Date.valueOf("2016-03-01")));
         return "calificaciones";
     }
 
