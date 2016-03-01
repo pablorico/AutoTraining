@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Calificacion del Servicio</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(calificaciones)}">
+        <h2>Calificaciones</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Fecha</th>
+                <th>Excelente</th>
+                <th>Bueno</th>
+                <th>Regular</th>
+                <th>Malo</th>                
+            </tr>
+            <tr th:each="calificacion : ${calificaciones}">
+                <td th:text="${calificacion.fecha}"><a href="/calificacion/${calificacion.fecha}">Fecha</a></td>
+                <td th:text="${calificacion.excelente}">-1</td>
+                <td th:text="${calificacion.bueno}">-2</td>
+                <td th:text="${calificacion.regular}">-3</td>
+                <td th:text="${calificacion.malo}">-4</td>
+<!--                 
+                <td><a th:href="${'/product/' + product.id}">View</a></td>
+                <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+                <td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
+      -->
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

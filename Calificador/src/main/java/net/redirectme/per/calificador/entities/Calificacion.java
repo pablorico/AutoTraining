@@ -1,7 +1,8 @@
 package net.redirectme.per.calificador.entities;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+
+import java.sql.Date;
 
 @Entity
 public class Calificacion {
@@ -12,11 +13,11 @@ public class Calificacion {
     @Version
     private Integer version;
 
-    private Timestamp fecha;
-    private int excelente;
-    private int bueno;
-    private int regular;
-    private int malo;
+    private Date fecha=new Date(System.currentTimeMillis());
+    private int excelente=0;
+    private int bueno=0;
+    private int regular=0;
+    private int malo=0;
     
 	public Integer getId() {
 		return id;
@@ -30,10 +31,10 @@ public class Calificacion {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	public Timestamp getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(Timestamp fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 	public int getExcelente() {
@@ -57,6 +58,7 @@ public class Calificacion {
 	public int getMalo() {
 		return malo;
 	}
+	
 	public void setMalo(int malo) {
 		this.malo = malo;
 	}
