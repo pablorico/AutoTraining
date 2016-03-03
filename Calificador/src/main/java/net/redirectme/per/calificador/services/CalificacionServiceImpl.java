@@ -1,5 +1,6 @@
 package net.redirectme.per.calificador.services;
 
+import net.redirectme.per.calificador.CalificacionPorFecha;
 import net.redirectme.per.calificador.entities.Calificacion;
 import net.redirectme.per.calificador.repositories.CalificacionRepository;
 
