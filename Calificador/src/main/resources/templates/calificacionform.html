@@ -7,77 +7,96 @@
 <!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
 </head>
 <body>
-	
-		<div class="container-fluid">
-			<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
-			<!--    <h2>Product Details</h2> -->
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+		<!--    <h2>Product Details</h2> -->
+		<div class="jumbotron" align="center">
 			<div class="row">
-				<div class="col-md-2"></div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-success">
+						<a href="#" th:href="@{/excelente}"> <img alt=""
+							src="../static/images/great.jpg" height="200" th:src="@{images/great.jpg}" />
+						</a>
+					</button>
+					<!-- 
+				<div class="media">
+					<div class="media-middle media-middle">
+						<a href="#" th:href="@{/excelente}"> <img
+							class="media-object img-rounded" src="../static/images/great.jpg"
+							height="120" th:src="@{images/great.jpg}" />
+						</a>
+					</div>
+				</div>
+				 -->
+				</div>
 
-				<div class="col-md-2">
-					<div class="media">
-						<div class="media-middle media-middle">
-							<a href="#" th:href="@{/excelente}"> <img
-								class="media-object img-rounded"
-								src="../static/images/great.jpg" height="120"
-								th:src="@{images/great.jpg}" />
-							</a>
-						</div>
+				<div class="col-md-3">
+					<button type="button" class="btn btn-info">
+						<a href="#" th:href="@{/bueno}"> <img alt=""
+							src="../static/images/good.jpg" height="200" th:src="@{images/good.jpg}" />
+						</a>
+					</button>
+				</div>
+				<!-- 
+			<div class="col-md-2">
+				<div class="media">
+					<div class="media-middle media-middle">
+						<a href="#" th:href="@{/bueno}"> <img
+							class="media-object img-rounded" src="../static/images/good.jpg"
+							height="120" th:src="@{images/good.jpg}" />
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
+			 -->
 
-				<div class="col-md-2">
-					<div class="media">
-						<div class="media-middle media-middle">
-							<a href="#" th:href="@{/bueno}"> <img class="media-object img-rounded" src="../static/images/good.jpg"
-								height="120" th:src="@{images/good.jpg}" />
-							</a>
-						</div>
+				<div class="col-md-3">
+				<button type="button" class="btn btn-warning">
+					<a href="#" th:href="@{/regular}"> <img alt=""
+						src="../static/images/soso.jpg" height="200" th:src="@{images/soso.jpg}" />
+					</a>
+				</button>
+				</div>
+				<!-- 
+			<div class="col-md-2">
+				<div class="media">
+					<div class="media-middle media-middle">
+						<a href="#" th:href="@{/regular}"> <img
+							class="media-object img-rounded" src="../static/images/soso.jpg"
+							height="100" th:src="@{images/soso.jpg}" />
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-
-				<div class="col-md-2">
-					<div class="media">
-						<div class="media-middle media-middle">
-							<a href="#" th:href="@{/regular}"> <img class="media-object img-rounded" src="../static/images/soso.jpg"
-								height="100" th:src="@{images/soso.jpg}" />
-							</a>
-						</div>
+			 -->
+				<div class="col-md-3">
+				<button type="button" class="btn btn-danger">
+				<img alt=""
+						src="../static/images/bad.jpg" height="200" th:src="@{images/bad.jpg}" />
+				<!-- 
+					<a href="#" th:href="@{/malo}"> <img alt=""
+						src="../static/images/bad.jpg" th:src="@{images/bad.jpg}" />
+					</a>
+					 -->
+				</button>
+				</div>
+				<!-- 
+			<div class="col-md-2">
+				<div class="media">
+					<div class="media-middle media-middle">
+						<a href="#" th:href="@{/malo}"> <img
+							class="media-object img-rounded" src="../static/images/bad.jpg"
+							height="120" th:src="@{images/bad.jpg}" />
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-
-				<div class="col-md-2">
-					<div class="media">
-						<div class="media-middle media-middle">
-							<a href="#" th:href="@{/malo}"> <img class="media-object img-rounded" src="../static/images/bad.jpg"
-								height="120" th:src="@{images/bad.jpg}" />
-							</a>
-						</div>
-					</div>
-				</div>
+			-->
 			</div>
-	<button type="button" >
-	<a href="#" th:href="@{/malo}">
-	<img alt="" src="../static/images/bad.jpg" th:src="@{images/bad.jpg}"/>
-	</a>
-	</button>
 		</div>
-	
+	</div>
+
 </body>
 </html>
