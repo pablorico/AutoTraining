@@ -1,8 +1,16 @@
 package net.redirectme.per.calificador.entities;
 
-import javax.persistence.*;
+
 
 import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
 
 @Entity
 public class Calificacion {
@@ -13,11 +21,13 @@ public class Calificacion {
     @Version
     private Integer version;
 
+    @Column(unique=true)
     private Date fecha=new Date(System.currentTimeMillis());
-    private int excelente=0;
-    private int bueno=0;
-    private int regular=0;
-    private int malo=0;
+
+    private Integer excelente=new Integer(0);
+    private Integer bueno=new Integer(0);
+    private Integer regular=new Integer(0);
+    private Integer malo=new Integer(0);
     
 	public Integer getId() {
 		return id;
@@ -37,29 +47,30 @@ public class Calificacion {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public int getExcelente() {
+	public Integer getExcelente() {
 		return excelente;
 	}
-	public void setExcelente(int excelente) {
+	public void setExcelente(Integer excelente) {
 		this.excelente = excelente;
 	}
-	public int getBueno() {
+	public Integer getBueno() {
 		return bueno;
 	}
-	public void setBueno(int bueno) {
+	public void setBueno(Integer bueno) {
 		this.bueno = bueno;
 	}
-	public int getRegular() {
+	public Integer getRegular() {
 		return regular;
 	}
-	public void setRegular(int regular) {
+	public void setRegular(Integer regular) {
 		this.regular = regular;
 	}
-	public int getMalo() {
+	
+	public Integer getMalo() {
 		return malo;
 	}
 	
-	public void setMalo(int malo) {
+	public void setMalo(Integer malo) {
 		this.malo = malo;
 	}
 }

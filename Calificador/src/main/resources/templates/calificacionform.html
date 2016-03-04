@@ -7,80 +7,77 @@
 <!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
 </head>
 <body>
-	<div class="container">
-		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+	
+		<div class="container-fluid">
+			<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
-		<!--    <h2>Product Details</h2> -->
-		<div>
+			<!--    <h2>Product Details</h2> -->
+			<div class="row">
+				<div class="col-md-2"></div>
 
-			<form class="form-horizontal" th:object="${calificacion}"
-				th:action="@{/excelente}" method="post">
-				<input type="hidden" th:field="*{id}" /> 
-				<input type="hidden" th:field="*{version}" />
-				<div class="row">
-					<button type="submit" class="btn btn-default">Excelente</button>
+				<div class="col-md-2">
+					<div class="media">
+						<div class="media-middle media-middle">
+							<a href="#" th:href="@{/excelente}"> <img
+								class="media-object img-rounded"
+								src="../static/images/great.jpg" height="120"
+								th:src="@{images/great.jpg}" />
+							</a>
+						</div>
+					</div>
 				</div>
-				</form>
-			
-			<form class="form-horizontal" th:object="${calificacion}"
-				th:action="@{/bueno}" method="post">
-				<input type="hidden" th:field="*{id}" /> 
-				<input type="hidden" th:field="*{version}" />
-				<div class="row">
-					<button type="submit" class="btn btn-default">Bueno</button>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+
+				<div class="col-md-2">
+					<div class="media">
+						<div class="media-middle media-middle">
+							<a href="#" th:href="@{/bueno}"> <img class="media-object img-rounded" src="../static/images/good.jpg"
+								height="120" th:src="@{images/good.jpg}" />
+							</a>
+						</div>
+					</div>
 				</div>
-				</form>
-			<form class="form-horizontal" th:object="${calificacion}"
-				th:action="@{/regular}" method="post">
-				<input type="hidden" th:field="*{id}" /> 
-				<input type="hidden" th:field="*{version}" />
-				<div class="row">
-					<button type="submit" class="btn btn-default">Regular</button>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+
+				<div class="col-md-2">
+					<div class="media">
+						<div class="media-middle media-middle">
+							<a href="#" th:href="@{/regular}"> <img class="media-object img-rounded" src="../static/images/soso.jpg"
+								height="100" th:src="@{images/soso.jpg}" />
+							</a>
+						</div>
+					</div>
 				</div>
-				</form>
-			<form class="form-horizontal" th:object="${calificacion}"
-				th:action="@{/malo}" method="post">
-				<input type="hidden" th:field="*{id}" /> 
-				<input type="hidden" th:field="*{version}" />
-				<div class="row">
-					<button type="submit" class="btn btn-default">Malo</button>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+
+				<div class="col-md-2">
+					<div class="media">
+						<div class="media-middle media-middle">
+							<a href="#" th:href="@{/malo}"> <img class="media-object img-rounded" src="../static/images/bad.jpg"
+								height="120" th:src="@{images/bad.jpg}" />
+							</a>
+						</div>
+					</div>
 				</div>
-				</form>
-			
-			
-			
-			
-				<!--     
-            <div class="form-group">
-                <label class="col-sm-2 control-label">ExcelenteDescription:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{description}"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Price:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{price}"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Image Url:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{imageUrl}"/>
-                </div>
-            </div>
-            
-				<div class="row">
-					<button type="submit" class="btn btn-default"
-						th:onclick="excelente">Excelente</button>
-					<button type="submit" class="btn btn-default" th:onclick="bueno">Bueno</button>
-					<button type="submit" class="btn btn-default" th:onclick="regular">Regular</button>
-					<button type="submit" class="btn btn-default" th:onclick="malo">Malo</button>
-				</div>
-			</form>
-			 -->
+			</div>
+	<button type="button" >
+	<a href="#" th:href="@{/malo}">
+	<img alt="" src="../static/images/bad.jpg" th:src="@{images/bad.jpg}"/>
+	</a>
+	</button>
 		</div>
-	</div>
-
+	
 </body>
 </html>

@@ -3,12 +3,12 @@ package net.redirectme.per.calificador;
 import java.sql.Date;
 
 public class CalificacionPorFecha {
-    private Date fecha;
-    private int excelente;
-    private int bueno;
-    private int regular;
-    private int malo;
-    
+ 	private Date fecha;
+ 	private int excelente;
+ 	private int bueno;
+ 	private int regular;
+ 	private int malo;
+ 	
 	public Date getFecha() {
 		return fecha;
 	}
@@ -36,7 +36,6 @@ public class CalificacionPorFecha {
 	public int getMalo() {
 		return malo;
 	}
-	
 	public void setMalo(int malo) {
 		this.malo = malo;
 	}

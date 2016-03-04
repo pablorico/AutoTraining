@@ -2,13 +2,10 @@ package net.redirectme.per.calificador.services;
 
 import java.sql.Date;
 
-import net.redirectme.per.calificador.CalificacionPorFecha;
 import net.redirectme.per.calificador.entities.Calificacion;
 
 public interface CalificacionService {
     
-	Iterable<Calificacion> listAllCalificaciones();
-
 	Iterable<Calificacion> listCalificacionesByRango(Date desde, Date hasta);
 	
     Calificacion addExcelente();
