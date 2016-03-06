@@ -1,5 +1,9 @@
 package net.redirectme.per.calificador.controllers;
+
 import java.sql.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,80 +14,66 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import net.redirectme.per.calificador.entities.Calificacion;
 import net.redirectme.per.calificador.services.CalificacionService;
 
-
 @Controller
 public class CalificacionController {
 
-    private CalificacionService calificacionService;
+	private CalificacionService calificacionService;
 
-    @Autowired
-    public void setCalificacionService(CalificacionService calificacionService) {
-        this.calificacionService = calificacionService;
-    }
+	@Autowired
+	public void setCalificacionService(CalificacionService calificacionService) {
+		this.calificacionService = calificacionService;
+	}
 
-    @RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
-    public String calificaciones(Model model){
-    	model.addAttribute("calificaciones", calificacionService.listCalificacionesByRango(Date.valueOf("2016-02-01"), new Date(System.currentTimeMillis())));
-        return "calificaciones";
-    }
+	@RequestMapping(value = "/calificacionesAnt", method = RequestMethod.GET)
+	public String calificaciones(Model model) {
+		model.addAttribute("calificaciones", calificacionService.listCalificacionesByRango(Date.valueOf("2016-02-01"),
+				new Date(System.currentTimeMillis())));
+		return "calificaciones";
+	}
 
-    @RequestMapping("/calificar")
-    public String newCalificacion(Model model){
-        model.addAttribute("calificacion", new Calificacion());
-        return "calificacionform";
-    }
-    
-    @RequestMapping(value = "bueno")
-    public String saveBueno(){
-        calificacionService.addBueno();
-        return "redirect:/calificar";
-    }
-    @RequestMapping(value = "regular")
-    public String saveRegular(){
-        calificacionService.addRegular();
-        return "redirect:/calificar";
-    }
-    
-    @RequestMapping(value = "malo")
-    public String saveMalo(){
-        calificacionService.addMalo();
-        return "redirect:/calificar";
-    }
-    
-    @RequestMapping(value = "excelente")
-    public String saveExcelente(){
-        calificacionService.addExcelente();
-        return "redirect:/calificar";
-    }
-    /**
-    @RequestMapping("product/{id}")
-    public String showProduct(@PathVariable Integer id, Model model){
-        model.addAttribute("product", productService.getProductById(id));
-        return "productshow";
-    }
+	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
+	public void calificaciones(HttpServletRequest request, HttpServletResponse response) {
+		// 1. Fetch your data
+		Iterable<Calificacion> lc = calificacionService.listCalificacionesByRango(Date.valueOf("2016-02-01"),
+				new Date(System.currentTimeMillis()));
 
-    @RequestMapping("product/edit/{id}")
-    public String edit(@PathVariable Integer id, Model model){
-        model.addAttribute("product", productService.getProductById(id));
-        return "productform";
-    }
+		
+		// 2. Create your excel
+		// 3. write excel file to your response.
+	}
 
-    @RequestMapping("product/new")
-    public String newProduct(Model model){
-        model.addAttribute("product", new Product());
-        return "productform";
-    }
+	@RequestMapping("/calificar")
+	public String newCalificacion(Model m) {
+		return "calificacionform";
+	}
 
-    @RequestMapping(value = "product", method = RequestMethod.POST)
-    public String saveProduct(Product product){
-        productService.saveProduct(product);
-        return "redirect:/product/" + product.getId();
-    }
+	@RequestMapping(value = "gracias")
+	public String sayGracias() {
+		return "redirect:/calificar";
+	}
 
-    @RequestMapping("product/delete/{id}")
-    public String delete(@PathVariable Integer id){
-        productService.deleteProduct(id);
-        return "redirect:/products";
-    }
-*/
+	@RequestMapping(value = "bueno")
+	public String saveBueno() {
+		calificacionService.addBueno();
+		return "graciasBueno";
+	}
+
+	@RequestMapping(value = "regular")
+	public String saveRegular() {
+		calificacionService.addRegular();
+		return "graciasRegular";
+	}
+
+	@RequestMapping(value = "malo")
+	public String saveMalo() {
+		calificacionService.addMalo();
+		return "graciasMalo";
+	}
+
+	@RequestMapping(value = "excelente")
+	public String saveExcelente() {
+		calificacionService.addExcelente();
+		return "graciasExcelente";
+	}
+
 }

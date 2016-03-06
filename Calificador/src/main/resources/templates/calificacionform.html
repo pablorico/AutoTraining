@@ -1,102 +1,84 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-<!-- 
-    <title>Spring Framework Guru</title>
- -->
-<!--/*/ <th:block th:include="fragments/headerinclude :: head"></th:block> /*/-->
+<th:block th:include="fragments/headerinclude :: head"></th:block>
 </head>
 <body>
-
 	<div class="container">
-		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
-
-		<!--    <h2>Product Details</h2> -->
+		<th:block th:include="fragments/header :: header"></th:block>
 		<div class="jumbotron" align="center">
+		<div class="row">
+		<h1>¿Que tal hoy nuestro Servicio?</h1>
+		</div>
+		<div class="row"><h3> </h3></div>
 			<div class="row">
 				<div class="col-md-3">
-					<button type="button" class="btn btn-success btn-lg">
-						<a href="#" th:href="@{/excelente}"> <img class="img-circle" alt=""
-							src="../static/images/great.jpg" height="200" th:src="@{images/great.jpg}" />
-						</a>
-					</button>
-					<!-- 
-				<div class="media">
-					<div class="media-middle media-middle">
-						<a href="#" th:href="@{/excelente}"> <img
-							class="media-object img-rounded" src="../static/images/great.jpg"
-							height="120" th:src="@{images/great.jpg}" />
-						</a>
-					</div>
+					<form th:action="@{/excelente}">
+						<button type="submit" class="btn btn-success btn-lg">
+							<div class="row">
+								<img class="img-circle" alt="" src="../static/images/great.jpg"
+									height="200" th:src="@{images/great.jpg}" />
+							</div>
+							<div class="row">
+								<h3>
+									<span class="label label-success">Excelente!!!</span>
+								</h3>
+							</div>
+						</button>
+					</form>
 				</div>
-				 -->
-				</div>
+				<div class="col-md-3">
+					<form th:action="@{/bueno}">
+						<button type="submit" class="btn btn-info btn-lg">
+							<div class="row">
 
-				<div class="col-md-3">
-					<button type="button" class="btn btn-info btn-lg">
-						<a href="#" th:href="@{/bueno}"> <img class="img-circle" alt=""
-							src="../static/images/good.jpg" height="200" th:src="@{images/good.jpg}" />
-						</a>
-					</button>
-				</div>
-				<!-- 
-			<div class="col-md-2">
-				<div class="media">
-					<div class="media-middle media-middle">
-						<a href="#" th:href="@{/bueno}"> <img
-							class="media-object img-rounded" src="../static/images/good.jpg"
-							height="120" th:src="@{images/good.jpg}" />
-						</a>
-					</div>
-				</div>
-			</div>
-			 -->
+								<img class="img-circle" alt="" src="../static/images/good.jpg"
+									height="200" th:src="@{images/good.jpg}" />
+							</div>
+							<div class="row">
+								<h3>
+									<span class="label label-info">Bueno!</span>
+								</h3>
+							</div>
 
+						</button>
+					</form>
+				</div>
 				<div class="col-md-3">
-				<button type="button" class="btn btn-warning btn-lg">
-					<a href="#" th:href="@{/regular}"> <img  class="img-circle" alt=""
-						src="../static/images/soso.jpg" height="200" th:src="@{images/soso.jpg}" />
-					</a>
-				</button>
+					<form th:action="@{/regular}">
+						<button type="submit" class="btn btn-warning btn-lg">
+							<div class="row">
+
+								<img class="img-circle" alt="" src="../static/images/soso.jpg"
+									height="200" th:src="@{images/soso.jpg}" />
+							</div>
+							<div class="row">
+								<h3>
+									<span class="label label-warning">Regular...</span>
+								</h3>
+							</div>
+
+						</button>
+					</form>
 				</div>
-				<!-- 
-			<div class="col-md-2">
-				<div class="media">
-					<div class="media-middle media-middle">
-						<a href="#" th:href="@{/regular}"> <img
-							class="media-object img-rounded" src="../static/images/soso.jpg"
-							height="100" th:src="@{images/soso.jpg}" />
-						</a>
-					</div>
-				</div>
-			</div>
-			 -->
 				<div class="col-md-3">
-				<button type="button" class="btn btn-danger btn-lg">
-				<img class="img-circle" alt=""
-						src="../static/images/bad.jpg" height="200" th:src="@{images/bad.jpg}" />
-				<!-- 
-					<a href="#" th:href="@{/malo}"> <img alt=""
-						src="../static/images/bad.jpg" th:src="@{images/bad.jpg}" />
-					</a>
-					 -->
-				</button>
+					<form th:action="@{/malo}">
+						<button type="submit" class="btn btn-danger btn-lg">
+							<div class="row">
+
+								<img class="img-circle" alt="" src="../static/images/bad.jpg"
+									height="200" th:src="@{images/bad.jpg}" />
+							</div>
+							<div class="row">
+								<h3>
+									<span class="label label-danger">Malo.</span>
+								</h3>
+							</div>
+						</button>
+					</form>
 				</div>
-				<!-- 
-			<div class="col-md-2">
-				<div class="media">
-					<div class="media-middle media-middle">
-						<a href="#" th:href="@{/malo}"> <img
-							class="media-object img-rounded" src="../static/images/bad.jpg"
-							height="120" th:src="@{images/bad.jpg}" />
-						</a>
-					</div>
-				</div>
-			</div>
-			-->
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
