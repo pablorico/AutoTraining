@@ -22,7 +22,11 @@ public class CalificacionServiceImpl implements CalificacionService {
 	public Iterable<Calificacion> listCalificacionesByRango(Date desde, Date hasta) {
 		return calificacionRepository.findByFechaBetween(desde, hasta);
 	}
-
+	
+	@Override
+	public Iterable<Calificacion> listCalificacionesAll() {
+		return calificacionRepository.findAll();
+	}
 	@Override
 	public Calificacion addExcelente() {
 		Calificacion c = calificacionRepository.findByFecha(new Date(System.currentTimeMillis()));

@@ -12,6 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").permitAll();
 		httpSecurity.csrf().disable();
 		httpSecurity.headers().frameOptions().disable();
+
 	}
 
 }

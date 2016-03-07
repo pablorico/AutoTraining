@@ -2,6 +2,7 @@ package net.redirectme.per.calificador;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,36 +12,34 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.PrintSetup;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import net.redirectme.per.calificador.entities.Calificacion;
+
 public class genXLS {
+
 	private static final String[] titles = { "Fecha", "Excelente", "Bueno", "Regular", "Malo" };
 	private Workbook wb;
 
-	public void getData(String[][] data) throws IOException {
-
+	public String getData(Iterable<Calificacion> calificaciones, Date desde, Date hasta) throws IOException {
+		
         wb = new HSSFWorkbook();
-        
-        Map<String, CellStyle> styles = createStyles(wb);
-
-        Sheet sheet = wb.createSheet("Business Plan");
+        String nombreSheet = "Calif_"+desde.toString()+"_"+hasta.toString();
+        String nombre = nombreSheet+".xls";
+		Sheet sheet = wb.createSheet(nombreSheet);
+		Map<String, CellStyle> styles = createStyles(wb);
 
         //turn off gridlines
         sheet.setDisplayGridlines(false);
         sheet.setPrintGridlines(false);
         sheet.setFitToPage(true);
         sheet.setHorizontallyCenter(true);
-        PrintSetup printSetup = sheet.getPrintSetup();
-        printSetup.setLandscape(true);
 
         //the following three statements are required only for HSSF
         sheet.setAutobreaks(true);
-        printSetup.setFitHeight((short)1);
-        printSetup.setFitWidth((short)1);
-
+       
         //the header row: centered text in 48pt font
         Row headerRow = sheet.createRow(0);
         headerRow.setHeightInPoints(12.75f);
@@ -50,82 +49,43 @@ public class genXLS {
             cell.setCellStyle(styles.get("header"));
         }
         sheet.createFreezePane(0, 1);
-
+        
         Row row;
-        Cell cell;
-        int rownum = 1;
-        for (int i = 0; i < data.length; i++, rownum++) {
-            row = sheet.createRow(rownum);
-            if(data[i] == null) continue;
-
-            for (int j = 0; j < data[i].length; j++) {
-                cell = row.createCell(j);
-                String styleName;
-                boolean isHeader = i == 0 || data[i-1] == null;
-                switch(j){
-                    case 0:
-                        if(isHeader) {
-                            styleName = "cell_b";
-                            cell.setCellValue(Double.parseDouble(data[i][j]));
-                        } else {
-                            styleName = "cell_normal";
-                            cell.setCellValue(data[i][j]);
-                        }
-                        break;
-                    case 1:
-                        if(isHeader) {
-                            styleName = i == 0 ? "cell_h" : "cell_bb";
-                        } else {
-                            styleName = "cell_indented";
-                        }
-                        cell.setCellValue(data[i][j]);
-                        break;
-                    case 2:
-                        styleName = isHeader ? "cell_b" : "cell_normal";
-                        cell.setCellValue(data[i][j]);
-                        break;
-                    case 3:
-                        styleName = isHeader ? "cell_b_centered" : "cell_normal_centered";
-                        cell.setCellValue(Integer.parseInt(data[i][j]));
-                        break;
-                    case 4: {
-                    	styleName = isHeader ? "cell_b_centered" : "cell_normal_centered";
-                        cell.setCellValue(Integer.parseInt(data[i][j]));
-                        break;
-                    }
-                    case 5: {
-                        int r = rownum + 1;
-                        String fmla = "IF(AND(D"+r+",E"+r+"),E"+r+"+D"+r+",\"\")";
-                        cell.setCellFormula(fmla);
-                        styleName = isHeader ? "cell_bg" : "cell_g";
-                        break;
-                    }
-                    default:
-                        styleName = data[i][j] != null ? "cell_blue" : "cell_normal";
-                }
-
-                cell.setCellStyle(styles.get(styleName));
-            }
+        Cell cellFecha;
+        Cell cellExcelente;
+        Cell cellBueno;
+        Cell cellRegular;
+        Cell cellMalo;
+        
+        int rownum = 0;
+        for (Calificacion data : calificaciones) {
+            rownum++;
+        	row = sheet.createRow(rownum);
+            cellFecha = row.createCell(0);
+            cellFecha.setCellStyle(styles.get("cell_normal_date"));
+            cellExcelente = row.createCell(1);
+            cellBueno = row.createCell(2);
+            cellRegular = row.createCell(3);
+            cellMalo = row.createCell(4);
+        
+            cellFecha.setCellValue(data.getFecha());
+            cellExcelente.setCellValue(data.getExcelente());
+            cellBueno.setCellValue(data.getBueno());
+            cellRegular.setCellValue(data.getRegular());
+            cellMalo.setCellValue(data.getMalo());
+                                
         }
-
-        //group rows for each phase, row numbers are 0-based
-        sheet.groupRow(4, 6);
-        sheet.groupRow(9, 13);
-        sheet.groupRow(16, 18);
-
-        //set column widths, the width is measured in units of 1/256th of a character width
-        sheet.setColumnWidth(0, 256*6);
-        sheet.setColumnWidth(1, 256*33);
-        sheet.setColumnWidth(2, 256*20);
-        sheet.setZoom(75,0); //75% scale
-
+        
         // Write the output to a file
-        String file = "businessplan.xls";
+        String file = "/tmp/"+nombre;
         FileOutputStream out = new FileOutputStream(file);
         wb.write(out);
         out.close();
+        return nombre;
     }
 
+	
+	
 	/**
 	 * create a library of cell styles
 	 */
@@ -216,7 +176,7 @@ public class genXLS {
 		style = createBorderedStyle(wb);
 		style.setAlignment(CellStyle.ALIGN_RIGHT);
 		style.setWrapText(true);
-		style.setDataFormat(df.getFormat("d-mmm"));
+		style.setDataFormat(df.getFormat("dd/mm/yy"));
 		styles.put("cell_normal_date", style);
 
 		style = createBorderedStyle(wb);

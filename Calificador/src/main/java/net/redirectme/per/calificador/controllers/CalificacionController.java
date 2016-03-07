@@ -1,5 +1,9 @@
 package net.redirectme.per.calificador.controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import net.redirectme.per.calificador.genXLS;
 import net.redirectme.per.calificador.entities.Calificacion;
 import net.redirectme.per.calificador.services.CalificacionService;
 
@@ -32,14 +37,36 @@ public class CalificacionController {
 	}
 
 	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
-	public void calificaciones(HttpServletRequest request, HttpServletResponse response) {
-		// 1. Fetch your data
-		Iterable<Calificacion> lc = calificacionService.listCalificacionesByRango(Date.valueOf("2016-02-01"),
-				new Date(System.currentTimeMillis()));
-
+	public void calificaciones(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		// 2. Create your excel
-		// 3. write excel file to your response.
+		Iterable<Calificacion> lc = calificacionService.listCalificacionesAll();
+
+		String xls = new genXLS().getData(lc, Date.valueOf("2016-02-01"), new Date(System.currentTimeMillis()));
+
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + xls + "\"");
+		response.setContentType("application/octet-stream"); // set content
+																// attributes
+																// for the
+																// response
+
+		FileInputStream inputStream = new FileInputStream(new File("/tmp/"+xls));
+
+		OutputStream outputStream = response.getOutputStream(); // get output
+																// stream of the
+																// response
+
+		byte[] buffer = new byte[1024];
+		int bytesRead = -1;
+		while ((bytesRead = inputStream.read(buffer)) != -1) { // write bytes
+																// read from the
+																// input stream
+																// into the
+																// output stream
+			outputStream.write(buffer, 0, bytesRead);
+		}
+		inputStream.close();
+		outputStream.flush();
+
 	}
 
 	@RequestMapping("/calificar")

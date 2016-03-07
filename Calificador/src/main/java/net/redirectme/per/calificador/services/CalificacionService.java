@@ -7,6 +7,7 @@ import net.redirectme.per.calificador.entities.Calificacion;
 public interface CalificacionService {
     
 	Iterable<Calificacion> listCalificacionesByRango(Date desde, Date hasta);
+	Iterable<Calificacion> listCalificacionesAll();
 	
     Calificacion addExcelente();
     Calificacion addBueno();
