@@ -70,5 +70,5 @@ public class CalificacionServiceImpl implements CalificacionService {
 		c.setMalo(new Integer(c.getMalo().intValue() + 1));
 		return calificacionRepository.save(c);
 	}
-
+	
 }

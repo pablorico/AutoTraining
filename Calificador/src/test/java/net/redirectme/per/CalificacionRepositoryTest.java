@@ -46,7 +46,7 @@ public class CalificacionRepositoryTest {
 
         //should equal
         assertEquals(calificacion.getId(), fetchedCalificacion.getId());
-        assertEquals(calificacion.getFecha(), fetchedCalificacion.getFecha());
+        assertEquals(calificacion.getFecha().toString(), fetchedCalificacion.getFecha().toString());
 
         //update description and save
         fetchedCalificacion.setExcelente(-1);

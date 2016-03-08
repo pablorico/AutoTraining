@@ -74,33 +74,42 @@ public class CalificacionController {
 		return "calificacionform";
 	}
 
-	@RequestMapping(value = "gracias")
+	@RequestMapping(value = "/gracias")
 	public String sayGracias() {
 		return "redirect:/calificar";
 	}
 
-	@RequestMapping(value = "bueno")
+	@RequestMapping(value = "/bueno")
 	public String saveBueno() {
 		calificacionService.addBueno();
 		return "graciasBueno";
 	}
 
-	@RequestMapping(value = "regular")
+	@RequestMapping(value = "/regular")
 	public String saveRegular() {
 		calificacionService.addRegular();
 		return "graciasRegular";
 	}
 
-	@RequestMapping(value = "malo")
+	@RequestMapping(value = "/malo")
 	public String saveMalo() {
 		calificacionService.addMalo();
 		return "graciasMalo";
 	}
 
-	@RequestMapping(value = "excelente")
+	@RequestMapping(value = "/excelente")
 	public String saveExcelente() {
 		calificacionService.addExcelente();
 		return "graciasExcelente";
 	}
 
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout() {
+		return "index";
+	}
 }
