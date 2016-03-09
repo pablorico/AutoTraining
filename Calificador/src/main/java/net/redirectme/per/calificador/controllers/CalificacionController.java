@@ -29,14 +29,14 @@ public class CalificacionController {
 		this.calificacionService = calificacionService;
 	}
 
-	@RequestMapping(value = "/calificacionesAnt", method = RequestMethod.GET)
+	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
 	public String calificaciones(Model model) {
 		model.addAttribute("calificaciones", calificacionService.listCalificacionesByRango(Date.valueOf("2016-02-01"),
 				new Date(System.currentTimeMillis())));
 		return "calificaciones";
 	}
 
-	@RequestMapping(value = "/calificaciones", method = RequestMethod.GET)
+	@RequestMapping(value = "/calificacionesXLS", method = RequestMethod.GET)
 	public void calificaciones(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		Iterable<Calificacion> lc = calificacionService.listCalificacionesAll();

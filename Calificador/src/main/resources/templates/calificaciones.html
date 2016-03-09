@@ -14,6 +14,7 @@
         <table class="table table-striped">
             <tr>
                 <th>Fecha</th>
+                <th>Turno</th>
                 <th>Excelente</th>
                 <th>Bueno</th>
                 <th>Regular</th>
@@ -21,6 +22,7 @@
             </tr>
             <tr th:each="calificacion : ${calificaciones}">
                 <td th:text="${calificacion.fecha}"><a href="/calificacion/${calificacion.fecha}">Fecha</a></td>
+                <td th:text="${calificacion.turno}">-1</td>
                 <td th:text="${calificacion.excelente}">-1</td>
                 <td th:text="${calificacion.bueno}">-2</td>
                 <td th:text="${calificacion.regular}">-3</td>

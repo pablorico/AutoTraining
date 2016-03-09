@@ -7,7 +7,7 @@ import net.redirectme.per.calificador.entities.Calificacion;
 
 
 public interface CalificacionRepository extends CrudRepository<Calificacion, Integer>{
-	Calificacion findByFecha(Date d);
+	Calificacion findByFechaAndTurno(Date d, String t);
 	Iterable<Calificacion> findByFechaBetween(Date desde, Date hasta);
 	//Iterable<Calificacion> findAll();
 }

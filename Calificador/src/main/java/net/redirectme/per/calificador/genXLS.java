@@ -20,7 +20,7 @@ import net.redirectme.per.calificador.entities.Calificacion;
 
 public class genXLS {
 
-	private static final String[] titles = { "Fecha", "Excelente", "Bueno", "Regular", "Malo" };
+	private static final String[] titles = { "Fecha", "Turno", "Excelente", "Bueno", "Regular", "Malo" };
 	private Workbook wb;
 
 	public String getData(Iterable<Calificacion> calificaciones, Date desde, Date hasta) throws IOException {
@@ -52,6 +52,7 @@ public class genXLS {
         
         Row row;
         Cell cellFecha;
+        Cell cellTurno;
         Cell cellExcelente;
         Cell cellBueno;
         Cell cellRegular;
@@ -63,12 +64,14 @@ public class genXLS {
         	row = sheet.createRow(rownum);
             cellFecha = row.createCell(0);
             cellFecha.setCellStyle(styles.get("cell_normal_date"));
-            cellExcelente = row.createCell(1);
-            cellBueno = row.createCell(2);
-            cellRegular = row.createCell(3);
-            cellMalo = row.createCell(4);
+            cellTurno = row.createCell(1);
+            cellExcelente = row.createCell(2);
+            cellBueno = row.createCell(3);
+            cellRegular = row.createCell(4);
+            cellMalo = row.createCell(5);
         
             cellFecha.setCellValue(data.getFecha());
+            cellTurno.setCellValue(data.getTurno());
             cellExcelente.setCellValue(data.getExcelente());
             cellBueno.setCellValue(data.getBueno());
             cellRegular.setCellValue(data.getRegular());

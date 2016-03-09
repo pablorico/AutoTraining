@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
+import net.redirectme.per.calificador.Turno;
+
 
 @Entity
 public class Calificacion {
@@ -24,6 +26,7 @@ public class Calificacion {
     @Column(unique=true)
     private Date fecha=new Date(System.currentTimeMillis());
 
+    private String turno=Turno.getTurno(System.currentTimeMillis());
     private Integer excelente=new Integer(0);
     private Integer bueno=new Integer(0);
     private Integer regular=new Integer(0);
@@ -72,5 +75,13 @@ public class Calificacion {
 	
 	public void setMalo(Integer malo) {
 		this.malo = malo;
+	}
+	
+	public void setTurno(String turno) {
+		this.turno = turno;
+	}
+	
+	public String getTurno() {
+		return turno;
 	}
 }

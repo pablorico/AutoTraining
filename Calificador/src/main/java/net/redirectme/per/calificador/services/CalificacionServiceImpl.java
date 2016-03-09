@@ -1,5 +1,6 @@
 package net.redirectme.per.calificador.services;
 
+import net.redirectme.per.calificador.Turno;
 import net.redirectme.per.calificador.entities.Calificacion;
 import net.redirectme.per.calificador.repositories.CalificacionRepository;
 
@@ -29,18 +30,19 @@ public class CalificacionServiceImpl implements CalificacionService {
 	}
 	@Override
 	public Calificacion addExcelente() {
-		Calificacion c = calificacionRepository.findByFecha(new Date(System.currentTimeMillis()));
+		long now = System.currentTimeMillis();
+		Calificacion c = calificacionRepository.findByFechaAndTurno(new Date(now),Turno.getTurno(now));
 
 		if (c == null)
 			c = new Calificacion();
-
 		c.setExcelente(new Integer(c.getExcelente().intValue() + 1));
 		return calificacionRepository.save(c);
 	}
 
 	@Override
 	public Calificacion addBueno() {
-		Calificacion c = calificacionRepository.findByFecha(new Date(System.currentTimeMillis()));
+		long now = System.currentTimeMillis();
+		Calificacion c = calificacionRepository.findByFechaAndTurno(new Date(now),Turno.getTurno(now));
 
 		if (c == null)
 			c = new Calificacion();
@@ -51,7 +53,8 @@ public class CalificacionServiceImpl implements CalificacionService {
 
 	@Override
 	public Calificacion addRegular() {
-		Calificacion c = calificacionRepository.findByFecha(new Date(System.currentTimeMillis()));
+		long now = System.currentTimeMillis();
+		Calificacion c = calificacionRepository.findByFechaAndTurno(new Date(now),Turno.getTurno(now));
 
 		if (c == null)
 			c = new Calificacion();
@@ -62,7 +65,8 @@ public class CalificacionServiceImpl implements CalificacionService {
 
 	@Override
 	public Calificacion addMalo() {
-		Calificacion c = calificacionRepository.findByFecha(new Date(System.currentTimeMillis()));
+		long now = System.currentTimeMillis();
+		Calificacion c = calificacionRepository.findByFechaAndTurno(new Date(now),Turno.getTurno(now));
 
 		if (c == null)
 			c = new Calificacion();
