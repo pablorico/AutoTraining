@@ -4,17 +4,19 @@ package net.redirectme.per.calificador.entities;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import net.redirectme.per.calificador.Turno;
 
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames = {"fecha", "turno"})) 
 public class Calificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +25,6 @@ public class Calificacion {
     @Version
     private Integer version;
 
-    @Column(unique=true)
     private Date fecha=new Date(System.currentTimeMillis());
 
     private String turno=Turno.getTurno(System.currentTimeMillis());

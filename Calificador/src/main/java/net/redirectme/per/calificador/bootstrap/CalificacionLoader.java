@@ -38,9 +38,9 @@ public class CalificacionLoader implements ApplicationListener<ContextRefreshedE
         c2.setTurno("Noche");
         c2.setExcelente(10);
         c2.setMalo(3);
-        c2.setFecha(Date.valueOf("2016-02-27"));
+        c2.setFecha(Date.valueOf("2016-02-25"));
         calificacionRepository.save(c2);
-        log.info("Saved 27-feb-2016 - id: " + c2.getId());
+        log.info("Saved 25/Noche-feb-2016 - id: " + c2.getId());
         
         Calificacion c3 = new Calificacion();
         c3.setTurno("Noche");
