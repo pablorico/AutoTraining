@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"net.redirectme.per.calificador.entities"})
-@EnableJpaRepositories(basePackages = {"net.redirectme.per.calificador.repositories"})
+@EntityScan(basePackages = {"net.redirectme.per.calificador.entities","net.redirectme.per.calificador.security"})
+@EnableJpaRepositories(basePackages = {"net.redirectme.per.calificador.repositories","net.redirectme.per.calificador.security"})
 @EnableTransactionManagement
 public class RepositoryConfiguration {
 }
