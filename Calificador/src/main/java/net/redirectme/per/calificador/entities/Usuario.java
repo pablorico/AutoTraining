@@ -1,4 +1,4 @@
-package net.redirectme.per.calificador.security;
+package net.redirectme.per.calificador.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Version;
 
  
 @Entity
@@ -20,8 +21,11 @@ public class Usuario {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
  
+    @Version
+    private Integer version;
+    
     @Column(unique=true, nullable=false)
-    private String usuario;
+    private String usuarioId;
      
     @Column(nullable=false)
     private String password;
@@ -46,12 +50,12 @@ public class Usuario {
         this.id = id;
     }
  
-    public String getUsuario() {
-        return usuario;
+    public String getUsuarioId() {
+        return usuarioId;
     }
  
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuarioId(String usuarioId) {
+        this.usuarioId = usuarioId;
     }
  
     public String getPassword() {
@@ -91,7 +95,7 @@ public class Usuario {
         final int prime = 31;
         int result = 1;
         result = prime * result + id;
-        result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
+        result = prime * result + ((usuarioId == null) ? 0 : usuarioId.hashCode());
         return result;
     }
  
@@ -106,20 +110,28 @@ public class Usuario {
         Usuario other = (Usuario) obj;
         if (id != other.id)
             return false;
-        if (usuario == null) {
-            if (other.usuario != null)
+        if (usuarioId == null) {
+            if (other.usuarioId != null)
                 return false;
-        } else if (!usuario.equals(other.usuario))
+        } else if (!usuarioId.equals(other.usuarioId))
             return false;
         return true;
     }
  
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", usuario=" + usuario + ", password=" + password
+        return "Usuario [id=" + id + ", usuarioId=" + usuarioId + ", password=" + password
                 + ", nombre=" + nombre + ", apellido=" + apellido
                 + ", perfilesDeUsuario=" + perfilesDeUsuario +"]";
     }
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
     
 }
 

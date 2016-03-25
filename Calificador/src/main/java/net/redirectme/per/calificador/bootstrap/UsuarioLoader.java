@@ -1,4 +1,4 @@
-package net.redirectme.per.calificador.security;
+package net.redirectme.per.calificador.bootstrap;
 
 import java.util.HashSet;
 
@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+
+import net.redirectme.per.calificador.entities.PerfilDeUsuario;
+import net.redirectme.per.calificador.entities.Usuario;
+import net.redirectme.per.calificador.repositories.PerfilDeUsuarioRepository;
+import net.redirectme.per.calificador.repositories.UsuarioRepository;
 
 @Component
 public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -47,7 +52,7 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         log.info("Saved PERFIL ADMIN - id: " + perfilAdmin.getId());
         
         Usuario admin = new Usuario();
-        admin.setUsuario("Administrador");
+        admin.setUsuarioId("Administrador");
         admin.setNombre("Usuario");
         admin.setApellido("Administrador");
         admin.setPassword("admin123");
@@ -56,10 +61,10 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         admin.setPerfilesDeUsuario(perfilesDeUsuarioAdmin);
         usuarioRepository.save(admin);
 
-        log.info("Saved ADMIN - id: " + admin.getId()+" Perfiles: "+admin.getPerfilesDeUsuario());
+        log.info("Saved Administrador - id: " + admin.getId()+" / Pass:"+admin.getPassword()+" Perfiles: "+admin.getPerfilesDeUsuario());
 
         Usuario supervisor = new Usuario();
-        supervisor.setUsuario("Supervisor");
+        supervisor.setUsuarioId("Supervisor");
         supervisor.setNombre("Usuario");
         supervisor.setApellido("Supervisor");
         supervisor.setPassword("supervisor123");
@@ -68,10 +73,10 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         supervisor.setPerfilesDeUsuario(perfilesDeUsuarioSupervisor);
         
         usuarioRepository.save(supervisor);
-        log.info("Saved SUPERVISOR - id: " + supervisor.getId()+" Perfiles: "+supervisor.getPerfilesDeUsuario());
+        log.info("Saved Supervisor - id: " + supervisor.getId()+" / Pass:"+supervisor.getPassword()+" Perfiles: "+supervisor.getPerfilesDeUsuario());
 
         Usuario operador = new Usuario();
-        operador.setUsuario("Operador");
+        operador.setUsuarioId("Operador");
         operador.setNombre("Usuario");
         operador.setApellido("Operador");
         operador.setPassword("operador123");
@@ -80,7 +85,7 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         operador.setPerfilesDeUsuario(perfilesDeUsuarioOperador);
         
         usuarioRepository.save(operador);
-        log.info("Saved OPERADOR - id: " + operador.getId()+" Perfiles: "+operador.getPerfilesDeUsuario());
+        log.info("Saved Administrador - id: " + operador.getId()+" / Pass:"+operador.getPassword()+" Perfiles: "+operador.getPerfilesDeUsuario());
         
     }
 }

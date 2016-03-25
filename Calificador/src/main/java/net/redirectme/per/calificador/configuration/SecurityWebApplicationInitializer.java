@@ -1,4 +1,4 @@
-package net.redirectme.per.calificador.security;
+package net.redirectme.per.calificador.configuration;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
  

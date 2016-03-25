@@ -1,4 +1,4 @@
-package net.redirectme.per.calificador.security;
+package net.redirectme.per.calificador.entities;
 
 public enum TipoDePerfilDeUsuario {
     USUARIO("USUARIO"),
