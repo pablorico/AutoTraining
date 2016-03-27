@@ -11,31 +11,33 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
-    @Qualifier("usuarioDetailsService")
-    UserDetailsService usuarioDetailsService;
-     
-    @Autowired
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(usuarioDetailsService);
-    }
-    
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-      http.authorizeRequests()
-        .antMatchers("/", "/home","/cambiarClave").permitAll()
-        .antMatchers("/calificaciones","/calificacionesXLS","/calificar","/usuarios").access("hasRole('ADMIN')")
-        .antMatchers("/calificaciones","/calificacionesXLS","/calificar").access("hasRole('SUPERVISOR')")
-        .antMatchers("/calificar").access("hasRole('OPERADOR')")
-        .and().formLogin().loginPage("/login")
-        .and().csrf()
-        .and().exceptionHandling().accessDeniedPage("/acceso_invalido");
-    }
-/* NO SECURITY
-    @Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests().antMatchers("/").permitAll()
-		.and().authorizeRequests().antMatchers("/console/**").permitAll();
-		httpSecurity.csrf().disable();
-		httpSecurity.headers().frameOptions().disable();
-*/
+	@Qualifier("usuarioDetailsService")
+	UserDetailsService usuarioDetailsService;
+
+	@Autowired
+	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(usuarioDetailsService);
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+			.antMatchers("/", "/home", "/cambiarClave").permitAll()
+			.antMatchers("/usuarios").hasRole("ADMIN")
+			.antMatchers("/calificaciones","/calificacionesXLS").hasAnyRole("ADMIN","SUPERVISOR")
+			.antMatchers("/calificar").hasAnyRole("ADMIN","SUPERVISOR","OPERADOR")
+			.and().formLogin().loginPage("/login")
+			.and().csrf()
+			.and().exceptionHandling()
+			.accessDeniedPage("/acceso_invalido");
+	}
+	/*
+	 * NO SECURITY
+	 * 
+	 * @Override protected void configure(HttpSecurity httpSecurity) throws
+	 * Exception { httpSecurity.authorizeRequests().antMatchers("/").permitAll()
+	 * .and().authorizeRequests().antMatchers("/console/**").permitAll();
+	 * httpSecurity.csrf().disable();
+	 * httpSecurity.headers().frameOptions().disable();
+	 */
 }

@@ -24,9 +24,7 @@ public class UsuarioDetailsService implements UserDetailsService{
     @Transactional(readOnly=true)
     public UserDetails loadUserByUsername(String usuarioId)
             throws UsernameNotFoundException {
-    	System.out.println("Usuario solicitado: "+usuarioId);
     	Usuario u = usuarioService.getUsuarioByUsuario(usuarioId);
-        System.out.println("Usuario : "+u);
         if(u==null){
             System.out.println("Usuario inexistente");
             throw new UsernameNotFoundException("Usuario inexistente");
@@ -40,10 +38,8 @@ public class UsuarioDetailsService implements UserDetailsService{
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
          
         for(PerfilDeUsuario perfilDeUsuario : u.getPerfilesDeUsuario()){
-            System.out.println("PerfilDeUsuario : "+perfilDeUsuario);
             authorities.add(new SimpleGrantedAuthority("ROLE_"+perfilDeUsuario.getTipo()));
         }
-        System.out.print("authorities :"+authorities);
         return authorities;
     }
 

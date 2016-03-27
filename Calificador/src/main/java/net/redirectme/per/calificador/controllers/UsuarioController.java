@@ -55,7 +55,6 @@ public class UsuarioController {
     
     @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public String saveUsuario(Usuario usuario){
-    	System.out.println("saveUsuario "+usuario);
         usuarioService.saveUsuario(usuario);
         return "redirect:/usuarios";
     }
@@ -81,7 +80,6 @@ public class UsuarioController {
 	 @RequestMapping("usuario/edit/{id}")
 	 public String edit(@PathVariable Integer id, Model model){
 	     model.addAttribute("usuario", usuarioService.getUsuarioById(id));
-	     System.out.println(" usuario buscado:"+usuarioService.getUsuarioById(id));
 	     return "usuarioform";
 	 }
 	 

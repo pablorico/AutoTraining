@@ -53,8 +53,8 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         
         Usuario admin = new Usuario();
         admin.setUsuarioId("Administrador");
-        admin.setNombre("Usuario");
-        admin.setApellido("Administrador");
+        admin.setNombre("Jorge");
+        admin.setApellido("Perez");
         admin.setPassword("admin123");
         HashSet<PerfilDeUsuario> perfilesDeUsuarioAdmin=new HashSet<PerfilDeUsuario>();
         perfilesDeUsuarioAdmin.add(perfilAdmin);
@@ -65,9 +65,9 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 
         Usuario supervisor = new Usuario();
         supervisor.setUsuarioId("Supervisor");
-        supervisor.setNombre("Usuario");
-        supervisor.setApellido("Supervisor");
-        supervisor.setPassword("supervisor123");
+        supervisor.setNombre("Jose");
+        supervisor.setApellido("Rodriguez");
+        supervisor.setPassword("super123");
         HashSet<PerfilDeUsuario> perfilesDeUsuarioSupervisor=new HashSet<PerfilDeUsuario>();
         perfilesDeUsuarioSupervisor.add(perfilSupervisor);
         supervisor.setPerfilesDeUsuario(perfilesDeUsuarioSupervisor);
@@ -77,9 +77,9 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 
         Usuario operador = new Usuario();
         operador.setUsuarioId("Operador");
-        operador.setNombre("Usuario");
-        operador.setApellido("Operador");
-        operador.setPassword("operador123");
+        operador.setNombre("Juan");
+        operador.setApellido("Gonzalez");
+        operador.setPassword("opera123");
         HashSet<PerfilDeUsuario> perfilesDeUsuarioOperador=new HashSet<PerfilDeUsuario>();
         perfilesDeUsuarioOperador.add(perfilOperador);
         operador.setPerfilesDeUsuario(perfilesDeUsuarioOperador);

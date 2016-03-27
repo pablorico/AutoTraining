@@ -8,13 +8,17 @@
 <body>
 	<div class="container">
 		<th:block th:include="fragments/header :: header"></th:block>
+		<!-- 
 		<div align="center">
+	
 		<img src="../static/images/logo.png" width="300"
 				th:src="@{images/logo.png}" />
 		</div>
+		 -->
 		<div class="jumbotron" align="center">
 			<h1>Calificación del Servicio de Comedor Diario</h1>
 		</div>
+		<th:block th:include="login::loginFragment"></th:block>
 	</div>
 </body>
 </html>
