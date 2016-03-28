@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head lang="en">
 
 </head>
@@ -13,12 +13,12 @@
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
-							<li> <!-- th:if="${usuario.perfilesDeUsuario[0].tipo} == 'ADMIN'" -->
+							<li sec:authorize="hasRole('ADMIN')">
 							<a href="#" th:href="@{/usuarios}">Usuarios</a></li>
 							<li>
-								<!-- th:if="${usuario.perfilesDeUsuario[0].tipo} == 'ADMIN' or ${usuario.perfilesDeUsuario[0].tipo} == 'SUPERVISOR'" -->
 								<ul class="nav navbar-nav navbar-right">
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
+									<li sec:authorize="hasAnyRole('ADMIN','SUPERVISOR')" 
+									class="dropdown"><a href="#" class="dropdown-toggle"
 										data-toggle="dropdown" role="button" aria-haspopup="true"
 										aria-expanded="false">Reporting <span class="caret"></span></a>
 										<ul class="dropdown-menu">
@@ -29,7 +29,7 @@
 										</ul></li>
 								</ul>
 							</li>
-							<li>
+							<li sec:authorize="hasAnyRole('ADMIN','SUPERVISOR','OPERADOR')">
 								<!-- th:if="${usuario.perfilesDeUsuario[0].tipo} == 'ADMIN' or ${usuario.perfilesDeUsuario[0].tipo} == 'SUPERVISOR' or ${usuario.perfilesDeUsuario[0].tipo} == 'OPERADOR'"> -->
 								<a href="#" th:href="@{/calificar}">Calificar</a></li>
 						</ul>
