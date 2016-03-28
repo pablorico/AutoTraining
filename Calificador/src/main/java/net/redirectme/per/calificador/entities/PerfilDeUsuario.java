@@ -65,7 +65,7 @@ public class PerfilDeUsuario {
  
     @Override
     public String toString() {
-        return "UserProfile [id=" + id + ",  type=" + tipo  + "]";
+        return "UserProfile [id=" + id + ",  tipo=" + tipo  + "]";
     }
 
     public int getUsuarioId() {

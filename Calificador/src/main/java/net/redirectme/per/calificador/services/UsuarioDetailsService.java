@@ -26,7 +26,6 @@ public class UsuarioDetailsService implements UserDetailsService{
             throws UsernameNotFoundException {
     	Usuario u = usuarioService.getUsuarioByUsuario(usuarioId);
         if(u==null){
-            System.out.println("Usuario inexistente");
             throw new UsernameNotFoundException("Usuario inexistente");
         }
             return new org.springframework.security.core.userdetails.User(u.getUsuarioId(), u.getPassword(), 
