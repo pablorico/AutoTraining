@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head lang="en">
 <title>Calificación de Servicio</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,25 +9,18 @@
 
 <body>
 	<div class="container">
-		<!-- 
-		<div th:if="${usuario.usuarioId} != null">
- -->
 		<div sec:authorize="hasAnyRole('ADMIN','SUPERVISOR','OPERADOR')">
 			<th:block th:include="fragments/header :: header"></th:block>
 		</div>
-		<!--
 		<div align="center">
-	
-		<img src="../static/images/logo.png" width="300"
+			<img src="../static/images/logo.png" width="300"
 				th:src="@{images/logo.png}" />
 		</div>
-		 -->
+		
 		<div class="jumbotron" align="center">
-			<h1>Calificación del Servicio de Comedor Diario</h1>
+		
+			<h1>Calificación de Comedor Diario</h1>
 		</div>
-		<!-- 
-		<div th:if="${usuario.usuarioId} == null">
-		 -->
 		<div sec:authorize="!hasAnyRole('ADMIN','SUPERVISOR','OPERADOR')">
 			<th:block th:include="login::loginFragment"></th:block>
 		</div>

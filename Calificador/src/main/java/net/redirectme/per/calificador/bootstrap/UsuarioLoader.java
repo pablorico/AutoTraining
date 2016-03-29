@@ -52,10 +52,10 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         log.info("Saved PERFIL ADMIN - id: " + perfilAdmin.getId());
         
         Usuario admin = new Usuario();
-        admin.setUsuarioId("Administrador");
+        admin.setUsuarioId("jperez");
         admin.setNombre("Jorge");
         admin.setApellido("Perez");
-        admin.setPassword("admin123");
+        admin.setPassword("jperez123");
         HashSet<PerfilDeUsuario> perfilesDeUsuarioAdmin=new HashSet<PerfilDeUsuario>();
         perfilesDeUsuarioAdmin.add(perfilAdmin);
         admin.setPerfilesDeUsuario(perfilesDeUsuarioAdmin);
@@ -64,10 +64,10 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         log.info("Saved Administrador - id: " + admin.getId()+" / Pass:"+admin.getPassword()+" Perfiles: "+admin.getPerfilesDeUsuario());
 
         Usuario supervisor = new Usuario();
-        supervisor.setUsuarioId("Supervisor");
-        supervisor.setNombre("Jose");
-        supervisor.setApellido("Rodriguez");
-        supervisor.setPassword("super123");
+        supervisor.setUsuarioId("plopez");
+        supervisor.setNombre("Pablo");
+        supervisor.setApellido("Lopez");
+        supervisor.setPassword("plopez123");
         HashSet<PerfilDeUsuario> perfilesDeUsuarioSupervisor=new HashSet<PerfilDeUsuario>();
         perfilesDeUsuarioSupervisor.add(perfilSupervisor);
         supervisor.setPerfilesDeUsuario(perfilesDeUsuarioSupervisor);
@@ -76,10 +76,10 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
         log.info("Saved Supervisor - id: " + supervisor.getId()+" / Pass:"+supervisor.getPassword()+" Perfiles: "+supervisor.getPerfilesDeUsuario());
 
         Usuario operador = new Usuario();
-        operador.setUsuarioId("Operador");
-        operador.setNombre("Juan");
+        operador.setUsuarioId("cgonzalez");
+        operador.setNombre("Carlos");
         operador.setApellido("Gonzalez");
-        operador.setPassword("opera123");
+        operador.setPassword("cgonza123");
         HashSet<PerfilDeUsuario> perfilesDeUsuarioOperador=new HashSet<PerfilDeUsuario>();
         perfilesDeUsuarioOperador.add(perfilOperador);
         operador.setPerfilesDeUsuario(perfilesDeUsuarioOperador);
