@@ -1,5 +1,9 @@
 package net.redirectme.per.calificador.controllers;
 
+import java.util.Set;
+import java.util.HashSet;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import net.redirectme.per.calificador.entities.PerfilDeUsuario;
 import net.redirectme.per.calificador.entities.Usuario;
 import net.redirectme.per.calificador.services.UsuarioService;
 
@@ -49,9 +54,16 @@ public class UsuarioController {
     
 	@RequestMapping("/usuario/new")
     public String newUsuario(Model model){
-        model.addAttribute("usuario", new Usuario());
+		Usuario u = new Usuario();
+		Set<PerfilDeUsuario> psu = new HashSet<PerfilDeUsuario>();
+		PerfilDeUsuario pu = new PerfilDeUsuario();
+		psu.add(pu);
+		u.setPerfilesDeUsuario(psu);
+		model.addAttribute("usuario", u);
         return "usuarioform";
-    }
+        
+	}
+
     
     @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public String saveUsuario(Usuario usuario){
