@@ -1,8 +1,9 @@
 package net.redirectme.per.calificador.entities;
 
-import java.util.HashSet;
-import java.util.Set;
- 
+import java.util.List;
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,11 +37,11 @@ public class Usuario {
     @Column(nullable=false)
     private String apellido;
  
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinTable(name = "USUARIO_PERFIL_DE_USUARIO", 
              joinColumns = { @JoinColumn(name = "USUARIO_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "PERFIL_DE_USUARIO_ID") })
-    private Set<PerfilDeUsuario> perfilesDeUsuario = new HashSet<PerfilDeUsuario>();
+    private List<PerfilDeUsuario> perfilesDeUsuario = new ArrayList<PerfilDeUsuario>(0);
  
     public int getId() {
         return id;
@@ -82,11 +83,11 @@ public class Usuario {
         this.apellido = apellido;
     }
  
-    public Set<PerfilDeUsuario> getPerfilesDeUsuario() {
+    public List<PerfilDeUsuario> getPerfilesDeUsuario() {
         return perfilesDeUsuario;
     }
  
-    public void setPerfilesDeUsuario(Set<PerfilDeUsuario> perfilesDeUsuario) {
+    public void setPerfilesDeUsuario(List<PerfilDeUsuario> perfilesDeUsuario) {
         this.perfilesDeUsuario = perfilesDeUsuario;
     }
  

@@ -1,9 +1,5 @@
 package net.redirectme.per.calificador.controllers;
 
-import java.util.Set;
-import java.util.HashSet;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -55,10 +51,7 @@ public class UsuarioController {
 	@RequestMapping("/usuario/new")
     public String newUsuario(Model model){
 		Usuario u = new Usuario();
-		Set<PerfilDeUsuario> psu = new HashSet<PerfilDeUsuario>();
-		PerfilDeUsuario pu = new PerfilDeUsuario();
-		psu.add(pu);
-		u.setPerfilesDeUsuario(psu);
+		u.getPerfilesDeUsuario().add(new PerfilDeUsuario());
 		model.addAttribute("usuario", u);
         return "usuarioform";
         
@@ -67,7 +60,7 @@ public class UsuarioController {
     
     @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public String saveUsuario(Usuario usuario){
-        usuarioService.saveUsuario(usuario);
+    	usuarioService.saveUsuario(usuario);
         return "redirect:/usuarios";
     }
     

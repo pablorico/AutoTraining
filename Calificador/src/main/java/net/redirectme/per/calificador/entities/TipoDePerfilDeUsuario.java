@@ -1,7 +1,7 @@
 package net.redirectme.per.calificador.entities;
 
 public enum TipoDePerfilDeUsuario {
-    USUARIO("USUARIO"),
+    OPERADOR("OPERADOR"),
     SUPERVISOR("SUPERVISOR"),
     ADMIN("ADMIN");
      

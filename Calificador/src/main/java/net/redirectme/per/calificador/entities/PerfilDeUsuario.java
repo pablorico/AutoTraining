@@ -14,7 +14,7 @@ public class PerfilDeUsuario {
     private int id; 
  
     @Column(length=15, unique=true, nullable=false)
-    private String tipo = TipoDePerfilDeUsuario.USUARIO.getTipoDePerfilDeUsuario();
+    private String tipo = TipoDePerfilDeUsuario.OPERADOR.getTipoDePerfilDeUsuario();
     
     private int usuarioId;
      
