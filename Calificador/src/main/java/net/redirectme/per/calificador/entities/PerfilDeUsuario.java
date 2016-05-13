@@ -16,7 +16,7 @@ public class PerfilDeUsuario {
     @Column(length=15, unique=true, nullable=false)
     private String tipo = TipoDePerfilDeUsuario.OPERADOR.getTipoDePerfilDeUsuario();
     
-    private int usuarioId;
+    //private int usuarioId;
      
     public int getId() {
         return id;
@@ -67,7 +67,7 @@ public class PerfilDeUsuario {
     public String toString() {
         return "UserProfile [id=" + id + ",  tipo=" + tipo  + "]";
     }
-
+/*
     public int getUsuarioId() {
 		return usuarioId;
 	}
@@ -75,6 +75,6 @@ public class PerfilDeUsuario {
 	public void setUsuarioId(int usuarioId) {
 		this.usuarioId = usuarioId;
 	}
-     
+**/     
  
 }

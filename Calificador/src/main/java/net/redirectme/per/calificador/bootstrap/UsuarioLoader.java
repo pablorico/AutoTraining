@@ -53,7 +53,7 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 		admin.setApellido("Perez");
 		admin.setPassword("jperez123");
 		admin.getPerfilesDeUsuario().add(perfilAdmin);
-		usuarioRepository.save(admin);
+		admin = usuarioRepository.save(admin);
 
 		log.info("Saved Administrador - id: " + admin.getId() + " / Pass:" + admin.getPassword() + " Perfiles: "
 				+ admin.getPerfilesDeUsuario());
@@ -65,7 +65,7 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 		supervisor.setPassword("plopez123");
 		supervisor.getPerfilesDeUsuario().add(perfilSupervisor);
 
-		usuarioRepository.save(supervisor);
+		supervisor = usuarioRepository.save(supervisor);
 		log.info("Saved Supervisor - id: " + supervisor.getId() + " / Pass:" + supervisor.getPassword() + " Perfiles: "
 				+ supervisor.getPerfilesDeUsuario());
 
@@ -76,7 +76,7 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 		operador.setPassword("cgonza123");
 		operador.getPerfilesDeUsuario().add(perfilOperador);
 
-		usuarioRepository.save(operador);
+		operador = usuarioRepository.save(operador);
 		log.info("Saved Administrador - id: " + operador.getId() + " / Pass:" + operador.getPassword() + " Perfiles: "
 				+ operador.getPerfilesDeUsuario());
 

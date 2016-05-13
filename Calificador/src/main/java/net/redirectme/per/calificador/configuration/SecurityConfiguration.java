@@ -21,21 +21,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		http.authorizeRequests().antMatchers("/console/**").permitAll()
+			.and().authorizeRequests()
 			.antMatchers("/", "/home", "/cambiarClave").permitAll()
 			.antMatchers("/usuarios").hasRole("ADMIN")
 			.antMatchers("/calificaciones","/calificacionesXLS").hasAnyRole("ADMIN","SUPERVISOR")
 			.antMatchers("/calificar").hasAnyRole("ADMIN","SUPERVISOR","OPERADOR")
+			
 			.and().formLogin().loginPage("/login")
 			.and().csrf()
 			.and().exceptionHandling()
 			.accessDeniedPage("/acceso_invalido");
+		 http.csrf().disable();
+		 http.headers().frameOptions().disable();
 	}
 	/*
 	 * NO SECURITY
 	 * 
 	 * @Override protected void configure(HttpSecurity httpSecurity) throws
-	 * Exception { httpSecurity.authorizeRequests().antMatchers("/").permitAll()
+	 * Exception 
+	 * { 
+	 * httpSecurity.authorizeRequests().antMatchers("/").permitAll()
 	 * .and().authorizeRequests().antMatchers("/console/**").permitAll();
 	 * httpSecurity.csrf().disable();
 	 * httpSecurity.headers().frameOptions().disable();
