@@ -30,6 +30,7 @@ public class Siervo {
 	private Individuo individuo;
 
 	@ManyToOne
+	@JoinColumn(name="MINISTERIO_ID")
 	private Ministerio ministerio;
 
 	@ManyToOne
