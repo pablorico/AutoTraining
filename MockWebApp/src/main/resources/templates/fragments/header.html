@@ -22,16 +22,16 @@
 										data-toggle="dropdown" role="button" aria-haspopup="true"
 										aria-expanded="false">Reporting <span class="caret"></span></a>
 										<ul class="dropdown-menu">
-											<li><a href="#" th:href="@{/calificaciones}">Pantalla</a></li>
+											<li><a href="#" th:href="@{/usuariosPAN}">Pantalla</a></li>
 											<li role="separator" class="divider"></li>
-											<li><a href="#" th:href="@{/calificacionesXLS}">Exportar
+											<li><a href="#" th:href="@{/usuariosXLS}">Exportar
 													XLS</a></li>
 										</ul></li>
 								</ul>
 							</li>
 							<li sec:authorize="hasAnyRole('ADMIN','SUPERVISOR','OPERADOR')">
 								
-								<a href="#" th:href="@{/calificar}">Calificar</a></li>
+								<a href="#" th:href="@{/usuarios}">Otros</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li>
