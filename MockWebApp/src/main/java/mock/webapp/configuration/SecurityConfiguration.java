@@ -27,11 +27,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/calificaciones","/calificacionesXLS").hasAnyRole("ADMIN","SUPERVISOR")
 			.antMatchers("/calificar").hasAnyRole("ADMIN","SUPERVISOR","OPERADOR")
 			.and().formLogin().loginPage("/login")
-			.and().csrf()
 			.and().exceptionHandling()
 			.accessDeniedPage("/acceso_invalido");
-	//	http.csrf().disable();
-	//	http.headers().frameOptions().disable();
+		/* ELIMINAR ESTAS DOS LINEAS PARA INHABILITAR console H2 */
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
 	/*
 	 * NO SECURITY
