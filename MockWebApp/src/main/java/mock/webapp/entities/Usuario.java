@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Entity
 public class Usuario {
  
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
  
     @Version
     private Integer version;
@@ -30,7 +30,7 @@ public class Usuario {
     @OneToMany(mappedBy="usuario", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<PerfilDeUsuario> perfilesDeUsuario = new HashSet<PerfilDeUsuario>();
  
-    public int getId() {
+    public Integer getId() {
         return id;
     }
  
