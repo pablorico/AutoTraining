@@ -29,15 +29,15 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 		admin.setNombre("Jorge");
 		admin.setApellido("Perez");
 		admin.setPassword("jperez123");
-		PerfilDeUsuario perfilADMIN=new PerfilDeUsuario();
-		perfilADMIN.setTipo(TipoDePerfilDeUsuario.ADMIN.getTipoDePerfilDeUsuario());
-		PerfilDeUsuario perfilSUPERVISOR=new PerfilDeUsuario();
-		perfilSUPERVISOR.setTipo(TipoDePerfilDeUsuario.SUPERVISOR.getTipoDePerfilDeUsuario());
-		admin.addPerfilDeUsuario(perfilADMIN);
-		admin.addPerfilDeUsuario(perfilSUPERVISOR);
+		RolDeUsuario rolADMIN=new RolDeUsuario();
+		rolADMIN.setTipo(TipoDeRolDeUsuario.ADMIN.getTipoDeRolDeUsuario());
+		RolDeUsuario rolSUPERVISOR=new RolDeUsuario();
+		rolSUPERVISOR.setTipo(TipoDeRolDeUsuario.SUPERVISOR.getTipoDeRolDeUsuario());
+		admin.addRolDeUsuario(rolADMIN);
+		admin.addRolDeUsuario(rolSUPERVISOR);
 		usuarioService.saveUsuario(admin);
 		log.info("Saved Administrador - id: " + admin.getId() + " / Pass:" + admin.getPassword() + " Perfiles: "
-				+ admin.getPerfilesDeUsuario());
+				+ admin.getRolesDeUsuario());
 
 
 		Usuario operador = new Usuario();
@@ -45,26 +45,39 @@ public class UsuarioLoader implements ApplicationListener<ContextRefreshedEvent>
 		operador.setNombre("Carlos");
 		operador.setApellido("Gonzalez");
 		operador.setPassword("cgonza123");
-		PerfilDeUsuario perfilOPERADOR=new PerfilDeUsuario();
-		perfilOPERADOR.setTipo(TipoDePerfilDeUsuario.USUARIO.getTipoDePerfilDeUsuario());
-		operador.addPerfilDeUsuario(perfilOPERADOR);
+		RolDeUsuario rolOPERADOR=new RolDeUsuario();
+		rolOPERADOR.setTipo(TipoDeRolDeUsuario.USUARIO.getTipoDeRolDeUsuario());
+		operador.addRolDeUsuario(rolOPERADOR);
 		usuarioService.saveUsuario(operador);
 		log.info("Saved Operador - id: " + operador.getId() + " / Pass:" + operador.getPassword() + " Perfiles: "
-				+ operador.getPerfilesDeUsuario());
+				+ operador.getRolesDeUsuario());
 
 		Usuario supervisor = new Usuario();
 		supervisor.setUsuarioId("plopez");
 		supervisor.setNombre("Pablo");
 		supervisor.setApellido("Lopez");
 		supervisor.setPassword("plopez123");
-		perfilSUPERVISOR=new PerfilDeUsuario();
-		perfilSUPERVISOR.setTipo(TipoDePerfilDeUsuario.SUPERVISOR.getTipoDePerfilDeUsuario());
+		rolSUPERVISOR=new RolDeUsuario();
+		rolSUPERVISOR.setTipo(TipoDeRolDeUsuario.SUPERVISOR.getTipoDeRolDeUsuario());
 		
-		supervisor.addPerfilDeUsuario(perfilSUPERVISOR);
+		supervisor.addRolDeUsuario(rolSUPERVISOR);
 		usuarioService.saveUsuario(supervisor);
 		log.info("Saved Supervisor - id: " + supervisor.getId() + " / Pass:" + supervisor.getPassword() + " Perfiles: "
-				+ supervisor.getPerfilesDeUsuario());
+				+ supervisor.getRolesDeUsuario());
 
-		
+
+		for (int i = 1;i<50;i++) {
+			Usuario u = new Usuario();
+			u.setUsuarioId("U-"+i);
+			u.setNombre("Usuario");
+			u.setApellido("U"+i);
+			u.setPassword("x");
+			RolDeUsuario ru=new RolDeUsuario();
+			ru.setTipo(TipoDeRolDeUsuario.SUPERVISOR.getTipoDeRolDeUsuario());
+			u.addRolDeUsuario(ru);
+			usuarioService.saveUsuario(u);
+			log.info("Saved Usuario - id: " + u.getId() + " / Pass:" + u.getPassword() + " Perfiles: "
+				+ u.getRolesDeUsuario());
+		}
 	}
 }

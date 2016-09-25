@@ -35,10 +35,10 @@ public class MockWebRepositoryTest {
         usuario.setPassword("pass");
         usuario.setUsuarioId("PER");
         
-        PerfilDeUsuario perfil = new PerfilDeUsuario();
+        RolDeUsuario perfil = new RolDeUsuario();
         perfil.setTipo("ADMIN");
         
-        usuario.addPerfilDeUsuario(perfil);
+        usuario.addRolDeUsuario(perfil);
         
         //save data, verify has ID value after save
         assertNull(usuario.getId()); //null before save
@@ -60,7 +60,7 @@ public class MockWebRepositoryTest {
 
         int count = 0;
 
-        for(Usuario c : usuarios){
+        for(@SuppressWarnings("unused") Usuario c : usuarios){
             count++;
         }
         

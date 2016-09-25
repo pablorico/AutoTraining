@@ -5,7 +5,7 @@ import mock.webapp.util.*;
 
  
 @Entity
-public class PerfilDeUsuario {
+public class RolDeUsuario {
  
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id; 
@@ -16,7 +16,7 @@ public class PerfilDeUsuario {
  
 
 	@Column(length=15, nullable=false)
-    private String tipo = TipoDePerfilDeUsuario.USUARIO.getTipoDePerfilDeUsuario();
+    private String tipo = TipoDeRolDeUsuario.USUARIO.getTipoDeRolDeUsuario();
     
     @ManyToOne
     private Usuario usuario;
@@ -61,9 +61,9 @@ public class PerfilDeUsuario {
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof PerfilDeUsuario))
+        if (!(obj instanceof RolDeUsuario))
             return false;
-        PerfilDeUsuario other = (PerfilDeUsuario) obj;
+        RolDeUsuario other = (RolDeUsuario) obj;
         if (id != other.id)
             return false;
         if (tipo == null) {
@@ -76,7 +76,11 @@ public class PerfilDeUsuario {
  
     @Override
     public String toString() {
-        return "Perfil de Usuario [id=" + id + ",  tipo=" + tipo  + "][UsuarioID="+usuario.getId()+"]";
+        return "Rol de Usuario [id=" + id + ",  tipo=" + tipo  + "][UsuarioID="+usuario.getId()+"]";
+    }
+
+    public String getRolFormateado() {
+        return "["+tipo+"]";
     }
 
     public Usuario getUsuario() {

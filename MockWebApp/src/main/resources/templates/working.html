@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+<th:block th:include="fragments/headerinclude :: head"></th:block>
+<!-- 
+<meta http-equiv="refresh" content="1;url=/calificar" />
+ -->
+</head>
+
+<body>
+	<div class="container">
+		<th:block th:include="fragments/header :: header"></th:block>
+		<div class="alert alert-danger" role="alert">
+			<div align="center">
+				<img class="img-circle" height="200" th:src="@{images/working.jpg}" />
+			</div>
+			<h1 align="center">Trabajando en eso!</h1>
+		</div>
+	</div>
+</body>
+</html>

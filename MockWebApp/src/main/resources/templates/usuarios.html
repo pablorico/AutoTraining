@@ -9,26 +9,49 @@
 <body>
 	<div class="container">
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<h1>Usuarios Registrados</h1>
 		<div th:if="${not #lists.isEmpty(usuarios)}">
-			<h2>Usuarios Registrados</h2>
-			<table class="table table-striped">
-				<tr>
+
+			<table class="table table-condensed table-hover">
+				<tr class="info">
 					<th>Id</th>
 					<th>Usuario</th>
 					<th>Apellido</th>
-					<th>Nombres></th>
+					<th>Nombres</th>
 					<th>Perfil</th>
-					<th>Modificar</th>
-					<th>Eliminar</th>
+					<th></th>
 				</tr>
 				<tr th:each="usuario : ${usuarios}">
-					<td th:text="${usuario.id}"><a th:href="/usuario/edit/${usuario.id}">Id</a></td>
+					<td th:text="${usuario.id}"><a
+						th:href="/usuario/edit/${usuario.id}">Id</a></td>
 					<td th:text="${usuario.usuarioId}">Usuario</td>
 					<td th:text="${usuario.apellido}">Apellido</td>
 					<td th:text="${usuario.nombre}">Nombres</td>
-					<td th:text="${usuario.perfilesDeUsuario[0].tipo}">Perfil</td>
-					<td><a th:href="${'/usuario/edit/' + usuario.id}">Modificar</a></td>
+					<td th:text="${usuario.rolesFormateados}">Rol</td>
+					<td align="right"><div class="btn-group btn-group-xs"
+							role="group" aria-label="Acceder">
+							<button type="button" class="btn btn-info" aria-label="Modificar"
+								data-toggle="tooltip" title="Modificar">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-warning"
+								aria-label="Más Detalle" data-toggle="tooltip"
+								title="Más Detalle">
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							</button>
+						</div>
+						<div class="btn-group btn-group-xs" role="group"
+							aria-label="Eliminar">
+							<button type="button" class="btn btn-danger"
+								aria-label="Eliminar" data-toggle="tooltip" title="Eliminar">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</button>
+						</div></td>
+
+					<!-- 
+<a th:href="${'/usuario/edit/' + usuario.id}">Modificar</a></td>
 					<td><a th:href="${'/usuario/delete/' + usuario.id}">Eliminar</a></td>
+	 -->
 				</tr>
 			</table>
 
