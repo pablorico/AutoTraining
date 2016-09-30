@@ -10,7 +10,9 @@
 			<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+						<a class="navbar-brand" href="#" th:href="@{/}"
+							data-toggle="tooltip" aria-label="Inicio" title="Inicio"><span
+							class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
@@ -46,10 +48,12 @@
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a class="navbar-nav alert-info"
-								sec:authentication="principal.username"></a></li>
-							<li><a class="navbar-nav alert-danger" th:href="@{/logout}">Logout</a>
-							</li>
+							<li><p class="navbar-text"
+									sec:authentication="principal.username"></p></li>
+							<li><a class="nav navbar-nav"
+								aria-label="Salir" data-toggle="tooltip" title="Salir"
+								th:href="@{/logout}"> <span class="glyphicon glyphicon-log-out"></span>
+							</a></li>
 
 						</ul>
 					</div>
